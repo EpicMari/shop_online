@@ -127,26 +127,7 @@ const ProductListItem = ({
     </>
   );
 
-  const renderSingleProduct = () => (
-    <>
-      {/* <Heading productListItem headingType="h2">
-        {name}
-      </Heading>
-      <Img productImg src={image} alt={name} />
-      <Paragraph>{description}</Paragraph>
-      <Paragraph priceItem>{price}$</Paragraph> */}
-      {/* {renderButton()} */}
-    </>
-  );
-
-  return (
-    <>
-      {/* {listType === listsTypes.product
-        ? renderSingleProduct()
-        :  */}
-      {renderProductsList()}
-    </>
-  );
+  return <>{renderProductsList()}</>;
 };
 
 export default ProductListItem;

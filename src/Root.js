@@ -28,7 +28,6 @@ const Root = () => {
   const [openNotification, setOpenNotification] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState({});
-  // const [paypalBtn, setPaypalBtn] = useState(false);
   const [isOrderPaid, setIsOrderPaid] = useState(false);
 
   const handleOrderPaid = (value) => {
@@ -140,14 +139,6 @@ const Root = () => {
     handleCartTotalCalculate();
   }, [cart]);
 
-  // useEffect(() => {
-  //   filterProductsByCategory();
-  // }, [categorySelectValue]);
-
-  // useEffect(() => {
-  //   filteredProductsByInput();
-  // }, [productNameInputValue]);
-
   const filterProducts = () => {
     let tempProducts = [...initialProducts];
 
@@ -194,27 +185,6 @@ const Root = () => {
     setProductNameInputValue(e.target.value.toLowerCase());
   };
 
-  // const filteredProductsByInput = () => {
-  //   const filteredProducts = initialProducts.filter(
-  //     (product) =>
-  //       product.name.toLowerCase().slice(0, productNameInputValue.length) ===
-  //       productNameInputValue
-  //   );
-  //   setProducts([...filteredProducts]);
-  // };
-
-  // const filterProductsByCategory = () => {
-  //   if (categorySelectValue !== "all") {
-  //     const filteredProducts = initialProducts.filter(
-  //       (product) => product.category === categorySelectValue
-  //     );
-
-  //     setProducts([...filteredProducts]);
-  //   } else {
-  //     setProducts([...initialProducts]);
-  //   }
-  // };
-
   const handleCategorySelectValue = (e) => {
     setCategorySelectValue(e.target.value);
   };
@@ -240,7 +210,6 @@ const Root = () => {
     const selectedProduct = products.find((product) => product.id === id);
     setCart([...new Set([...cart, selectedProduct])]);
     const checkProductInCart = cart.find((product) => product.id === id);
-    // localStorage.setItem("cart", JSON.stringify(products));
     checkProductInCart && handleProductQuantityInCart(id);
   };
 

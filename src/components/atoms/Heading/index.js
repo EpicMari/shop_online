@@ -12,6 +12,9 @@ const Heading = ({
   homeHeadingAbout,
   productInCart,
   emptyCart,
+  paymentWrapper__heading,
+  paymentWrapper__description,
+  paymentWrapper__orderValue,
 }) => {
   const _renderHeading = () => {
     switch (headingType) {
@@ -35,13 +38,23 @@ const Heading = ({
           </H2>
         );
       case "h3":
-        return <H3>{children}</H3>;
+        return (
+          <H3 paymentWrapper__heading={paymentWrapper__heading}>{children}</H3>
+        );
       case "h4":
         return <H4>{children}</H4>;
       case "h5":
-        return <H5>{children}</H5>;
+        return (
+          <H5 paymentWrapper__orderValue={paymentWrapper__orderValue}>
+            {children}
+          </H5>
+        );
       case "h6":
-        return <H6>{children}</H6>;
+        return (
+          <H6 paymentWrapper__description={paymentWrapper__description}>
+            {children}
+          </H6>
+        );
 
       default:
         return <H3>{children}</H3>;

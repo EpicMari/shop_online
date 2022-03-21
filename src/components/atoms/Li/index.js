@@ -8,6 +8,7 @@ const Li = ({
   productListItem,
   cartProducts,
   footerSocialItem,
+  paymentWrapper__cartItem,
 }) => {
   return (
     <StyledLi
@@ -16,6 +17,7 @@ const Li = ({
       isProductListItem={productListItem}
       isCartProducts={cartProducts}
       isFooterSocialItem={footerSocialItem}
+      paymentWrapper__cartItem={paymentWrapper__cartItem}
     >
       {children}
     </StyledLi>

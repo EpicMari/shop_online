@@ -31,6 +31,8 @@ const Div = ({
   headerUl__dropdown,
   headerUl__dropdownMenu,
   totalCost,
+  paymentWrapper,
+  paymentWrapper__cart,
 }) => {
   return (
     <StyledDiv
@@ -62,6 +64,8 @@ const Div = ({
       headerUl__dropdown={headerUl__dropdown}
       headerUl__dropdownMenu={headerUl__dropdownMenu}
       isTotalCost={totalCost}
+      paymentWrapper={paymentWrapper}
+      paymentWrapper__cart={paymentWrapper__cart}
     >
       {children}
     </StyledDiv>

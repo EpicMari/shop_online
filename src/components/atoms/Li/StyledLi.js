@@ -54,4 +54,12 @@ export const StyledLi = styled.li`
     `}
 
     ${({ isFooterSocialItem }) => isFooterSocialItem && css``}
+
+    ${({ paymentWrapper__cartItem }) =>
+    paymentWrapper__cartItem &&
+    css`
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5px;
+    `}
 `;

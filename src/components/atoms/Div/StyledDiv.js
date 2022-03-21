@@ -229,8 +229,9 @@ export const StyledDiv = styled.div`
     ${({ isPaypalButtons }) =>
     isPaypalButtons &&
     css`
+      position: relative;
+      z-index: 0;
       padding: 0 20px;
-      /* margin: 0 auto; */
       max-width: 400px;
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
@@ -293,5 +294,18 @@ export const StyledDiv = styled.div`
       /* pointer-events: none; */
       transform: translateY(-10px)
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    `}
+
+    ${({ paymentWrapper }) =>
+    paymentWrapper &&
+    css`
+      width: 100%;
+      padding: 10%;
+    `}
+
+    ${({ paymentWrapper__cart }) =>
+    paymentWrapper__cart &&
+    css`
+      margin: 15px 0 20px 0;
     `}
 `;

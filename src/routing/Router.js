@@ -11,6 +11,7 @@ import SingleProduct from "../views/SingleProduct";
 import FooterSocial from "../components/molecules/FooterSocial";
 import Checkout from "../views/Checkout";
 import Orders from "../views/Orders";
+import Payment from "../views/Payment";
 
 const Router = () => {
   return (
@@ -26,6 +27,7 @@ const Router = () => {
             <Route path={routes.product} component={SingleProduct} />
             <Route path={routes.checkout} component={Checkout} />
             <Route path={routes.orders} component={Orders} />
+            <Route path={routes.payment} component={Payment} />
           </Switch>
         </HeaderTemplate>
         <FooterSocial />

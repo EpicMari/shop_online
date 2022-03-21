@@ -7,4 +7,5 @@ export const routes = {
   product: "/product/:productName",
   checkout: "/checkout",
   orders: "/orders",
+  payment: "/payment",
 };

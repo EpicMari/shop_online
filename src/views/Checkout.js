@@ -20,6 +20,9 @@ import {
   ordersCollection,
 } from "../firebase/firestoreUtils";
 import { checkoutFormSchema } from "../utils/validationSchema";
+import Payment from "./Payment";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { routes } from "../routes";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -43,43 +46,10 @@ const Checkout = () => {
     cart,
     resetCart,
   } = useContext(RootContext);
-  const paypal = useRef();
+
+  const [formValid, setFormValid] = useState(false);
+
   const classes = useStyles();
-  const [payBtn, setPayBtn] = useState(false);
-
-  const showPayBtn = () => {
-    setPayBtn(true);
-  };
-
-  useEffect(() => {
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions, err) => {
-          return actions.order.create({
-            intent: "capture",
-            purchase_units: [
-              {
-                description: "Your order",
-                amount: {
-                  currency_code: "USD",
-                  value: orderValue,
-                },
-              },
-            ],
-          });
-        },
-        onApprove: async (data, actions) => {
-          const order = await actions.order.capture();
-          console.log(order);
-
-          order.status === "COMPLETED" && handleOrderPaid(true);
-        },
-        onError: (err) => {
-          console.log(err);
-        },
-      })
-      .render(paypal.current);
-  }, []);
 
   return (
     <>
@@ -103,7 +73,7 @@ const Checkout = () => {
               validationSchema={checkoutFormSchema}
               onSubmit={(values, { resetForm }) => {
                 // isOrderPaid && resetCart();
-                showPayBtn();
+                setFormValid(true);
                 isOrderPaid && resetForm();
               }}
             >
@@ -251,6 +221,11 @@ const Checkout = () => {
                   >
                     pay
                   </Button>
+                  {formValid && (
+                    <Redirect
+                      to={{ pathname: routes.payment, state: { ...values } }}
+                    />
+                  )}
                 </Form>
               )}
             </Formik>
@@ -259,11 +234,6 @@ const Checkout = () => {
         <Div totalCost>
           <Heading headingType="h3">Total cost: {orderValue}$</Heading>
         </Div>
-        {payBtn && (
-          <Div paypalButtons>
-            <div ref={paypal}></div>
-          </Div>
-        )}
       </Div>
     </>
   );

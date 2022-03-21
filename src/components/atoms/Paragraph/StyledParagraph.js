@@ -82,4 +82,11 @@ export const P = styled.p`
         font-size: ${({ theme }) => theme.fontSizes.s};
       }
     `}
+
+    ${({ paymentWrapper__text }) =>
+    paymentWrapper__text &&
+    css`
+      font-size: ${({ theme }) => theme.fontSizes.s};
+      margin-bottom: 5px;
+    `}
 `;

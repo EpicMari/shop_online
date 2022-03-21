@@ -13,9 +13,17 @@ export const createUserInCollection = (userDetails, docId) => {
     .catch((err) => console.log(err));
 };
 
+// export const createOrderInFireStore = (docId, orderDetails) => {
+//   ordersCollection
+//     .doc(docId)
+//     .add({ ...orderDetails })
+//     .then((res) => console.log(res))
+//     .catch((err) => console.log(err));
+// };
+
 export const createOrderInFireStore = (orderDetails) => {
   ordersCollection
-    .add({ ...orderDetails })
+    .add(orderDetails)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
