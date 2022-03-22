@@ -5,7 +5,6 @@ import Paragraph from "../components/atoms/Paragraph";
 import Button from "../components/atoms/Button";
 import RootContext from "../context/RootContext";
 import Div from "../components/atoms/Div";
-import { useSnackbar } from "notistack";
 
 const SingleProduct = ({
   location: {
@@ -13,11 +12,7 @@ const SingleProduct = ({
   },
 }) => {
   const { addProductToCart } = useContext(RootContext);
-  const { enqueueSnackbar } = useSnackbar();
 
-  const handleClick = () => {
-    enqueueSnackbar("Product add to cart");
-  };
   return (
     <Div singleProductWrapper>
       <Heading productListItem headingType="h2">
@@ -31,7 +26,6 @@ const SingleProduct = ({
       <Button
         onClickFn={() => {
           addProductToCart(id);
-          handleClick();
         }}
         disabled={quantity <= inCartQuantity}
         btnType="material"

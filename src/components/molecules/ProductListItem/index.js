@@ -12,7 +12,6 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import IconButton from "../../atoms/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import { useSnackbar } from "notistack";
 
 const ProductListItem = ({
   name,
@@ -29,12 +28,6 @@ const ProductListItem = ({
     deleteProductFromCart,
     handleProductQuantityInCart,
   } = useContext(RootContext);
-
-  const { enqueueSnackbar } = useSnackbar();
-
-  const handleClick = () => {
-    enqueueSnackbar("Product add to cart");
-  };
 
   const renderProductsList = () => (
     <>
@@ -112,7 +105,6 @@ const ProductListItem = ({
           <Button
             onClickFn={() => {
               addProductToCart(id);
-              handleClick();
             }}
             disabled={quantity <= inCartQuantity}
             btnType="material"

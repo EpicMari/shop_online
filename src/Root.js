@@ -8,7 +8,7 @@ import { themes } from "./themes/themes";
 import { getProductsInCartFromLocalStorage } from "./helpers/localStorage";
 import { client } from "./contentful/client";
 import { StylesProvider } from "@material-ui/core";
-import { SnackbarProvider } from "notistack";
+import { useSnackbar } from "notistack";
 import { auth } from "./firebase/firebaseConfig";
 import { getUserByUid } from "./firebase/firestoreUtils";
 
@@ -25,10 +25,16 @@ const Root = () => {
   const [priceRange, setPriceRange] = useState([]);
   const [genderChoice, setGenderChoice] = useState("");
   const [deliveryMethod, setDeliveryMethod] = useState(0);
-  const [openNotification, setOpenNotification] = useState(false);
+  // const [openNotification, setOpenNotification] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState({});
   const [isOrderPaid, setIsOrderPaid] = useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const showNotification = (message, variant) => {
+    enqueueSnackbar(message, { variant });
+  };
 
   const handleOrderPaid = (value) => {
     setIsOrderPaid(value);
@@ -60,17 +66,17 @@ const Root = () => {
     setDeliveryMethod(event.target.value);
   };
 
-  const handleNotification = () => {
-    setOpenNotification(true);
-  };
+  // const handleNotification = () => {
+  //   setOpenNotification(true);
+  // };
 
-  const handleNotificationClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  // const handleNotificationClose = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
 
-    setOpenNotification(false);
-  };
+  //   setOpenNotification(false);
+  // };
 
   const setMaxAndMinPrice = (contentfulData) => {
     const productsPrices = contentfulData.map((product) => product.price);
@@ -211,6 +217,7 @@ const Root = () => {
     setCart([...new Set([...cart, selectedProduct])]);
     const checkProductInCart = cart.find((product) => product.id === id);
     checkProductInCart && handleProductQuantityInCart(id);
+    showNotification("Product added to cart", "success");
   };
 
   const deleteProductFromCart = (id) => {
@@ -230,8 +237,8 @@ const Root = () => {
     });
 
     setCart([...filteredProducts]);
-
     setProducts([...mappedProducts]);
+    showNotification("Product removed from the cart", "error");
   };
 
   const handleProductQuantityInCart = (id, operationType) => {
@@ -247,6 +254,8 @@ const Root = () => {
         : product
     );
     setCart([...mapedCart]);
+    operationType === "decrease" &&
+      showNotification("Product removed from the cart", "error");
   };
 
   const resetCart = () => {
@@ -266,7 +275,7 @@ const Root = () => {
         onOffMenu,
         priceRange,
         genderChoice,
-        openNotification,
+        // openNotification,
         orderValue,
         deliveryMethod,
         currentUser,
@@ -283,22 +292,21 @@ const Root = () => {
         handlePriceRange,
         menuOff,
         handleGenderChoiceValue,
-        handleNotificationClose,
-        handleNotification,
+        // handleNotificationClose,
+        // handleNotification,
         handleDeliveryMethod,
         handleOrderPaid,
         resetCart,
+        showNotification,
       }}
     >
       <ThemeProvider theme={themes}>
-        <SnackbarProvider maxSnack={3} variant="success">
-          <StylesProvider injectFirst>
-            <GlobalStyle />
-            <Wrapper>
-              <Router />
-            </Wrapper>
-          </StylesProvider>
-        </SnackbarProvider>
+        <StylesProvider injectFirst>
+          <GlobalStyle />
+          <Wrapper>
+            <Router />
+          </Wrapper>
+        </StylesProvider>
       </ThemeProvider>
     </RootContext.Provider>
   );

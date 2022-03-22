@@ -8,7 +8,6 @@ import Heading from "../components/atoms/Heading";
 import { createOrderInFireStore } from "../firebase/firestoreUtils";
 import { Redirect } from "react-router-dom";
 import { routes } from "../routes";
-import { useSnackbar } from "notistack";
 
 const Payment = ({
   location: {
@@ -25,8 +24,14 @@ const Payment = ({
     },
   },
 }) => {
-  const { orderValue, handleOrderPaid, isOrderPaid, cart, resetCart } =
-    useContext(RootContext);
+  const {
+    orderValue,
+    handleOrderPaid,
+    isOrderPaid,
+    cart,
+    resetCart,
+    showNotification,
+  } = useContext(RootContext);
   const paypal = useRef();
 
   useEffect(() => {
@@ -62,6 +67,7 @@ const Payment = ({
 
           order.status === "COMPLETED" && handleOrderPaid(true);
           resetCart();
+          showNotification("Successful payment", "info");
         },
         onError: (err) => {
           console.log(err);
