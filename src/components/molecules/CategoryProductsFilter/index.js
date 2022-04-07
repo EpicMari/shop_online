@@ -4,6 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import RootContext from "../../../context/RootContext";
 import { Select } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
+import { withStyles } from "@material-ui/core/styles";
 
 const CategoryProductsFilter = () => {
   const { categorySelectValue, handleCategorySelectValue, initialProducts } =
@@ -12,10 +13,21 @@ const CategoryProductsFilter = () => {
     "all",
     ...new Set(initialProducts.map((product) => product.category)),
   ];
+
+  const CustomInputLabel = withStyles({
+    root: {
+      "&.MuiFormLabel-root.Mui-focused": {
+        color: "#b99867",
+      },
+    },
+  })(InputLabel);
+
   return (
     <>
       <FormControl>
-        <InputLabel id="categoryFilterLabel">Category filter: </InputLabel>
+        <CustomInputLabel id="categoryFilterLabel">
+          Category filter:
+        </CustomInputLabel>
         <Select
           labelId="categoryFilterLabel"
           id="categoryFilter"

@@ -4,8 +4,6 @@ import { H1, H2, H3, H4, H5, H6 } from "./StyledHeading";
 const Heading = ({
   headingType,
   children,
-  loginHeading,
-  registerHeading,
   productListItem,
   cartHeading,
   headingHomeNewItems,
@@ -14,21 +12,22 @@ const Heading = ({
   emptyCart,
   paymentWrapper__heading,
   paymentWrapper__description,
-  paymentWrapper__orderValue,
 }) => {
   const _renderHeading = () => {
     switch (headingType) {
       case "h1":
         return (
-          <H1 headingHomeNewItems={headingHomeNewItems} emptyCart={emptyCart}>
+          <H1
+            headingHomeNewItems={headingHomeNewItems}
+            emptyCart={emptyCart}
+            paymentWrapper__heading={paymentWrapper__heading}
+          >
             {children}
           </H1>
         );
       case "h2":
         return (
           <H2
-            loginHeading={loginHeading}
-            registerHeading={registerHeading}
             productListItem={productListItem}
             cartHeading={cartHeading}
             homeHeadingAbout={homeHeadingAbout}
@@ -39,16 +38,14 @@ const Heading = ({
         );
       case "h3":
         return (
-          <H3 paymentWrapper__heading={paymentWrapper__heading}>{children}</H3>
+          <H3 paymentWrapper__description={paymentWrapper__description}>
+            {children}
+          </H3>
         );
       case "h4":
         return <H4>{children}</H4>;
       case "h5":
-        return (
-          <H5 paymentWrapper__orderValue={paymentWrapper__orderValue}>
-            {children}
-          </H5>
-        );
+        return <H5>{children}</H5>;
       case "h6":
         return (
           <H6 paymentWrapper__description={paymentWrapper__description}>

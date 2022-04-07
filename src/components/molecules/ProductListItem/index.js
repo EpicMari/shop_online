@@ -107,10 +107,9 @@ const ProductListItem = ({
               addProductToCart(id);
             }}
             disabled={quantity <= inCartQuantity}
-            btnType="material"
-            color="primary"
-            variant="contained"
-            className="responsiveBtn"
+            button
+            responsive
+            animation
           >
             add to cart
           </Button>

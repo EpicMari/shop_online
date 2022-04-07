@@ -5,7 +5,7 @@ import Heading from "../components/atoms/Heading";
 
 const Contact = () => {
   return (
-    <Div contactWrapper>
+    <Div formWrapper>
       <Heading headingType="h1">Contact</Heading>
       <ContactForm />
     </Div>

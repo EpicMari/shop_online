@@ -6,6 +6,9 @@ export const StyledUl = styled.ul`
     css`
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 auto;
+      max-width: 1400px;
     `}
 
   ${({ isHeaderUl }) =>

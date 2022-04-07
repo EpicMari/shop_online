@@ -12,12 +12,12 @@ export const StyledSpan = styled.span`
     isHeaderAmountProductsInCart &&
     css`
       position: absolute;
-      bottom: 11px;
-      right: 52px;
-      width: 10px;
-      padding: 2px 6px;
-      border-radius: 8px;
-      box-sizing: content-box;
+      bottom: 15px;
+      right: 60px;
+      height: 20px;
+      width: 20px;
+      line-height: 20px;
+      border-radius: 50%;
       font-size: ${({ theme }) => theme.fontSizes.xs};
       background: ${({ theme }) => theme.colors.darkBlue};
       color: ${({ theme }) => theme.colors.darkKhaki};

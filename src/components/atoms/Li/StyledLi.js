@@ -33,8 +33,13 @@ export const StyledLi = styled.li`
       flex-direction: column;
       flex-wrap: wrap;
       align-items: center;
-      margin: 0 auto;
-      padding: 10px;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: ${({ theme }) => theme.boxShadow};
+
+      @media (min-width: ${({ theme }) => theme.devices.tablet}) {
+        padding: 30px;
+      }
     `}
 
     ${({ isCartProducts }) =>
@@ -59,7 +64,9 @@ export const StyledLi = styled.li`
     paymentWrapper__cartItem &&
     css`
       display: flex;
-      justify-content: space-around;
-      margin-top: 5px;
+      place-items: center;
+      padding: 10px;
+      box-shadow: ${({ theme }) => theme.boxShadow};
+      margin-top: 10px;
     `}
 `;

@@ -2,11 +2,9 @@ import styled, { css } from "styled-components";
 import { Button as MaterialButton } from "@material-ui/core";
 
 export const StyledButton = styled.button`
-  /* color: ${({ color }) => color}; */
   background: none;
   outline: none;
   border: none;
-  /* padding: 20px; */
 
   ${({ isButtonHeader }) =>
     isButtonHeader &&
@@ -16,8 +14,7 @@ export const StyledButton = styled.button`
       transition: transform 0.3s 0.1s linear;
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
-        /* margin-right: 300px; */
-        transform: translateX(-360px);
+        transform: translateX(-340px);
       }
 
       svg {
@@ -49,22 +46,16 @@ export const StyledButton = styled.button`
     ${({ headerUl__dropdownBtn }) =>
     headerUl__dropdownBtn &&
     css`
-      .headerUl__dropdown
-        > &.headerUl__dropdownBtn:focus
-        + .headerUl__dropdownMenu {
-        opacity: 1;
-        transform: translateY(0);
-        /* pointer-events: all; */
-      }
-
       width: 100%;
-      margin-bottom: 20px;
       padding: 10px;
       color: ${({ theme }) => theme.colors.darkBlue};
-      font-size: 1.2rem;
+      font-size: ${({ theme }) => theme.fontSizes.s};
+
+      @media (min-width: ${({ theme }) => theme.devices.tablet}) {
+        font-size: ${({ theme }) => theme.fontSizes.m};
+      }
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
-        margin-bottom: 0;
         padding: 0 10px 0;
       }
 
@@ -76,15 +67,75 @@ export const StyledButton = styled.button`
     ${({ headerUl__signOut }) =>
     headerUl__signOut &&
     css`
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      text-transform: uppercase;
       color: ${({ theme }) => theme.colors.darkBlue};
-      font-size: 1.2rem;
+      font-size: ${({ theme }) => theme.fontSizes.s};
+      padding: 10px;
       margin-top: 10px;
 
       &:hover {
         color: ${({ theme }) => theme.colors.darkKhaki};
+      }
+
+      @media (min-width: ${({ theme }) => theme.devices.tablet}) {
+        font-size: ${({ theme }) => theme.fontSizes.m};
+      }
+    `}
+
+    ${({ button }) =>
+    button &&
+    css`
+      border: 1px solid ${({ theme }) => theme.colors.darkKhaki};
+      padding: 10px 20px;
+      text-align: center;
+      color: ${({ theme }) => theme.colors.darkKhaki};
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: 0.3s ease-out;
+
+      &:disabled {
+        background-color: grey;
+      }
+    `}
+
+    ${({ animation }) =>
+    animation &&
+    css`
+      &:hover {
+        background: ${({ theme }) => theme.colors.darkKhaki};
+        color: ${({ theme }) => theme.colors.white};
+      }
+    `}
+
+    ${({ responsive }) =>
+    responsive &&
+    css`
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        font-size: 14px;
+      }
+    `}
+
+    ${({ contained }) =>
+    contained &&
+    css`
+      background: ${({ theme }) => theme.colors.darkKhaki};
+      color: ${({ theme }) => theme.colors.white};
+      }
+    `}
+
+    ${({ loginBtn }) =>
+    loginBtn &&
+    css`
+      margin: 20px 0;
+    `}
+
+    ${({ singleProductBtn }) =>
+    singleProductBtn &&
+    css`
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        grid-area: 4 / 2;
       }
     `}
 `;

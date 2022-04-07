@@ -15,6 +15,7 @@ const Paragraph = ({
   productDescription,
   className,
   paymentWrapper__text,
+  paymentWrapper__cartItemName,
 }) => {
   return (
     <P
@@ -30,6 +31,7 @@ const Paragraph = ({
       productDescription={productDescription}
       className={className}
       paymentWrapper__text={paymentWrapper__text}
+      paymentWrapper__cartItemName={paymentWrapper__cartItemName}
     >
       {children}
     </P>

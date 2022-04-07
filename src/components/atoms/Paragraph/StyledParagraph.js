@@ -4,6 +4,7 @@ export const P = styled.p`
   ${({ isNewCustomer }) =>
     isNewCustomer &&
     css`
+      margin-top: 20px;
       text-align: center;
     `}
   ${({ forgottenPassword }) =>
@@ -87,6 +88,12 @@ export const P = styled.p`
     paymentWrapper__text &&
     css`
       font-size: ${({ theme }) => theme.fontSizes.s};
-      margin-bottom: 5px;
+      margin-top: 10px;
+    `}
+
+    ${({ paymentWrapper__cartItemName }) =>
+    paymentWrapper__cartItemName &&
+    css`
+      margin-left: 10px;
     `}
 `;

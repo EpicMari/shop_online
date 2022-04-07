@@ -11,10 +11,8 @@ const RegisterPage = () => {
   const { currentUser } = useContext(RootContext);
   return (
     <>
-      <Div registerFormWrapper>
-        <Heading registerHeading headingType="h2">
-          I’m new here
-        </Heading>
+      <Div formWrapper>
+        <Heading headingType="h1">I’m new here</Heading>
         <RegisterForm />
       </Div>
       {currentUser ? <Redirect to={routes.home} /> : ""}

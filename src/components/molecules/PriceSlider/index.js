@@ -16,7 +16,7 @@ const PriceSlider = () => {
         Price range
       </Typography>
       <Slider
-        style={{ width: "200px", margin: "50px" }}
+        style={{ width: "200px", margin: "50px", color: "#b99867" }}
         value={priceRange}
         onChange={handlePriceRange}
         min={minPrice}

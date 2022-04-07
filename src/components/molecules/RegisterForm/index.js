@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { auth } from "../../../firebase/firebaseConfig";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import { registerFormSchema } from "../../../utils/validationSchema";
+import Form from "../../atoms/Form";
 import Input from "../../atoms/Input";
-import Checkbox from "../../atoms/Checkbox";
 import Button from "../../atoms/Button";
-import RootContext from "../../../context/RootContext";
 import Select from "@material-ui/core/Select";
 import Paragraph from "../../atoms/Paragraph";
 import Div from "../../atoms/Div";
@@ -13,11 +12,11 @@ import { createUserInCollection } from "../../../firebase/firestoreUtils";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import CustomMessageError from "../../atoms/CustomMessageError";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const RegisterForm = () => {
-  const { genderChoice, handleGenderChoiceValue } = useContext(RootContext);
   const useStyles = makeStyles(() => ({
     selectStyles: {
       width: "100%",
@@ -25,6 +24,17 @@ const RegisterForm = () => {
     },
   }));
   const classes = useStyles();
+
+  const CustomCheckbox = withStyles({
+    root: {
+      color: "#2a4157",
+      "&$checked": {
+        color: "#2a4157",
+      },
+    },
+    checked: {},
+  })(Checkbox);
+
   return (
     <>
       <Formik
@@ -118,26 +128,18 @@ const RegisterForm = () => {
               </Select>
             </FormControl>
             <ErrorMessage name="gender" component={CustomMessageError} />
-            <Div registerTermsWrapper>
-              <Checkbox
-                color="primary"
+            <Div termsWrapper>
+              <CustomCheckbox
                 name="acceptTerms"
                 checked={values.acceptTerms}
-                onChangeFn={handleChange}
-                registerCheckbox
+                onChange={handleChange}
               />
               <Paragraph registerTerms>
                 Accept privacy policy and terms
               </Paragraph>
             </Div>
             <ErrorMessage name="acceptTerms" component={CustomMessageError} />
-            <Button
-              btnType="material"
-              color="primary"
-              variant="contained"
-              type="submit"
-              registerBtn
-            >
+            <Button button contained responsive type="submit">
               SIGN UP
             </Button>
           </Form>

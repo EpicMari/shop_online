@@ -3,14 +3,25 @@ import { Formik, ErrorMessage } from "formik";
 import emailjs from "emailjs-com";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
-import Checkbox from "../../atoms/Checkbox";
 import { contactFormSchema } from "../../../utils/validationSchema";
 import Form from "../../atoms/Form";
 import Paragraph from "../../atoms/Paragraph";
 import Div from "../../atoms/Div";
 import CustomMessageError from "../../atoms/CustomMessageError";
+import { withStyles } from "@material-ui/core/styles";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const ContactForm = () => {
+  const CustomCheckbox = withStyles({
+    root: {
+      color: "#2a4157",
+      "&$checked": {
+        color: "#2a4157",
+      },
+    },
+    checked: {},
+  })(Checkbox);
+
   return (
     <Formik
       initialValues={{
@@ -74,23 +85,16 @@ const ContactForm = () => {
             contactInput
           />
           <ErrorMessage name="message" component={CustomMessageError} />
-          <Div contactTermsWrapper>
-            <Checkbox
-              color="primary"
+          <Div termsWrapper>
+            <CustomCheckbox
               name="acceptTerms"
               checked={values.acceptTerms}
-              onChangeFn={handleChange}
+              onChange={handleChange}
             />
             <Paragraph> Accept privacy policy and terms</Paragraph>
           </Div>
           <ErrorMessage name="acceptTerms" component={CustomMessageError} />
-          <Button
-            btnType="material"
-            color="primary"
-            variant="contained"
-            type="submit"
-            contactBtn
-          >
+          <Button button contained responsive type="submit">
             Send
           </Button>
         </Form>

@@ -19,6 +19,12 @@ const Button = ({
   href,
   headerUl__dropdownBtn,
   headerUl__signOut,
+  addProductToCart,
+  button,
+  contained,
+  responsive,
+  animation,
+  singleProductBtn,
 }) => {
   return btnType === "material" ? (
     <StyledButtonMaterial
@@ -46,6 +52,13 @@ const Button = ({
       isButtonHeaderMenu={buttonHeaderMenu}
       headerUl__dropdownBtn={headerUl__dropdownBtn}
       headerUl__signOut={headerUl__signOut}
+      addProductToCart={addProductToCart}
+      button={button}
+      contained={contained}
+      responsive={responsive}
+      animation={animation}
+      loginBtn={loginBtn}
+      singleProductBtn={singleProductBtn}
     >
       {children}
     </StyledButton>

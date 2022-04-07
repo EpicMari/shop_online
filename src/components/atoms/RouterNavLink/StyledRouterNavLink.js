@@ -19,6 +19,22 @@ export const StyledNavLink = styled(NavLink)`
       }
     `}
 
+  ${({ headerUl__dropdownLink }) =>
+    headerUl__dropdownLink &&
+    css`
+      padding: 10px;
+      color: ${({ theme }) => theme.colors.darkBlue};
+      font-size: ${({ theme }) => theme.fontSizes.s};
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.darkKhaki};
+      }
+
+      @media (min-width: ${({ theme }) => theme.devices.tablet}) {
+        font-size: ${({ theme }) => theme.fontSizes.m};
+      }
+    `}
+
   ${({ isCheckoutCart }) =>
     isCheckoutCart &&
     css`
@@ -27,7 +43,7 @@ export const StyledNavLink = styled(NavLink)`
       bottom: 25px;
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
-        right: 10px;
+        right: 20px;
         bottom: 20px;
       }
     `}

@@ -4,6 +4,7 @@ import RootContext from "../context/RootContext";
 import Paragraph from "../components/atoms/Paragraph";
 import Ul from "../components/atoms/Ul";
 import Li from "../components/atoms/Li";
+import Img from "../components/atoms/Img";
 import Heading from "../components/atoms/Heading";
 import { createOrderInFireStore } from "../firebase/firestoreUtils";
 import { Redirect } from "react-router-dom";
@@ -79,11 +80,12 @@ const Payment = ({
   return (
     <>
       <Div paymentWrapper>
-        <Heading headingType="h3" paymentWrapper__heading>
+        <Heading headingType="h1" paymentWrapper__heading>
           Summary
         </Heading>
         <Div paymentWrapper__content>
-          <Div>
+          <Div paymentWrapper__info>
+            <Heading headingType="h3">Delivery address</Heading>
             <Paragraph paymentWrapper__text>First name: {firstName}</Paragraph>
             <Paragraph paymentWrapper__text>Last name: {lastName}</Paragraph>
             <Paragraph paymentWrapper__text>E-mail: {email}</Paragraph>
@@ -101,20 +103,22 @@ const Payment = ({
             </Paragraph>
           </Div>
           <Div paymentWrapper__cart>
-            <Heading headingType="h6" paymentWrapper__description>
+            <Heading headingType="h3" paymentWrapper__description>
               Cart
             </Heading>
             <Ul>
               {cart.map((item) => {
                 return (
                   <Li paymentWrapper__cartItem>
-                    <Paragraph>{item.name}</Paragraph>
-                    <Paragraph>{item.price * item.inCartQuantity}$</Paragraph>
+                    <Img cartImg src={item.image} alt={item.name} />
+                    <Paragraph paymentWrapper__cartItemName>
+                      {item.name} {item.price * item.inCartQuantity}$
+                    </Paragraph>
                   </Li>
                 );
               })}
             </Ul>
-            <Heading headingType="h5" paymentWrapper__orderValue>
+            <Heading headingType="h3" paymentWrapper__description>
               Total cost: {orderValue}
             </Heading>
           </Div>

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: "16px 16px 24px",
+    padding: "24px 20px 24px",
     margin: "0 10px",
     borderRadius: "20px",
     overflowY: "auto",
@@ -39,7 +39,6 @@ const Cart = () => {
   const { isCartOpen, handleCartClose, cart, cartTotal } =
     useContext(RootContext);
 
-  console.log(cart, "CART");
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -70,13 +69,7 @@ const Cart = () => {
                 onClickFn={handleCartClose}
                 checkoutCart
               >
-                <Button
-                  btnType="material"
-                  color="primary"
-                  variant="contained"
-                  href={routes.checkout}
-                  className="responsiveBtn"
-                >
+                <Button button contained responsive>
                   Checkout
                 </Button>
               </RouterNavLink>

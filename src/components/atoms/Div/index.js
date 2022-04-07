@@ -10,9 +10,8 @@ const Div = ({
   productsListWrapper,
   contactWrapper,
   registerFormWrapper,
-  registerTermsWrapper,
+  termsWrapper,
   homeWrapper,
-  contactTermsWrapper,
   plusMinusWrapper,
   lastThreeNewItems,
   homeSentenceWrapper,
@@ -28,11 +27,16 @@ const Div = ({
   paypalButtons,
   checkoutWrapper,
   singleProductWrapper,
+  singleProductContent,
   headerUl__dropdown,
   headerUl__dropdownMenu,
   totalCost,
   paymentWrapper,
+  paymentWrapper__content,
   paymentWrapper__cart,
+  headerWrapper__content,
+  paymentWrapper__info,
+  formWrapper,
 }) => {
   return (
     <StyledDiv
@@ -43,9 +47,8 @@ const Div = ({
       isProductsListWrapper={productsListWrapper}
       isContactWrapper={contactWrapper}
       isRegisterFormWrapper={registerFormWrapper}
-      isRegisterTermsWrapper={registerTermsWrapper}
+      isTermsWrapper={termsWrapper}
       isHomeWrapper={homeWrapper}
-      isContactTermsWrapper={contactTermsWrapper}
       isPlusMinusWrapper={plusMinusWrapper}
       isLastThreeNewItems={lastThreeNewItems}
       isHomeSentenceWrapper={homeSentenceWrapper}
@@ -61,11 +64,16 @@ const Div = ({
       isPaypalButtons={paypalButtons}
       isCheckoutWrapper={checkoutWrapper}
       isSingleProductWrapper={singleProductWrapper}
+      singleProductContent={singleProductContent}
       headerUl__dropdown={headerUl__dropdown}
       headerUl__dropdownMenu={headerUl__dropdownMenu}
       isTotalCost={totalCost}
       paymentWrapper={paymentWrapper}
+      paymentWrapper__content={paymentWrapper__content}
       paymentWrapper__cart={paymentWrapper__cart}
+      headerWrapper__content={headerWrapper__content}
+      paymentWrapper__info={paymentWrapper__info}
+      formWrapper={formWrapper}
     >
       {children}
     </StyledDiv>

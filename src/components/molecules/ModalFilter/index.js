@@ -34,13 +34,7 @@ const ModalFilter = () => {
 
   return (
     <Div modalFilter>
-      <Button
-        btnType="material"
-        variant="contained"
-        color="primary"
-        onClickFn={handleClickOpen}
-        className="responsiveBtn"
-      >
+      <Button button contained responsive onClickFn={handleClickOpen}>
         Filter
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -52,13 +46,7 @@ const ModalFilter = () => {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button
-            btnType="material"
-            variant="contained"
-            onClickFn={handleClose}
-            color="primary"
-            className="responsiveBtn"
-          >
+          <Button button contained responsive onClickFn={handleClose}>
             Ok
           </Button>
         </DialogActions>

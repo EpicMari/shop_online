@@ -4,8 +4,8 @@ export const StyledImg = styled.img`
   ${({ isProductImg }) =>
     isProductImg &&
     css`
-      height: 200px;
-      width: 300px;
+      height: 150px;
+      width: 250px;
       margin-bottom: 15px;
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s linear;
@@ -14,6 +14,11 @@ export const StyledImg = styled.img`
         &:hover {
           transform: scale(1.1);
         }
+      }
+
+      @media (min-width: ${({ theme }) => theme.devices.tablet}) {
+        height: 200px;
+        width: 300px;
       }
     `}
 

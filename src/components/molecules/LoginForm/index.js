@@ -1,10 +1,11 @@
-import { ErrorMessage, Form, Formik } from "formik";
+import { ErrorMessage, Formik } from "formik";
 import React from "react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { auth } from "../../../firebase/firebaseConfig";
 import { routes } from "../../../routes";
 import { loginFormSchema } from "../../../utils/validationSchema";
+import Form from "../../atoms/Form";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
 import CustomMessageError from "../../atoms/CustomMessageError";
@@ -49,13 +50,7 @@ const LoginForm = () => {
               loginInput
             />
             <ErrorMessage name="password" component={CustomMessageError} />
-            <Button
-              btnType="material"
-              color="primary"
-              variant="contained"
-              type="submit"
-              loginBtn
-            >
+            <Button button contained responsive loginBtn type="submit">
               LOG IN
             </Button>
           </Form>

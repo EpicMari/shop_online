@@ -212,10 +212,9 @@ const Checkout = () => {
                     />
                   </Div>
                   <Button
-                    btnType="material"
-                    color="primary"
-                    variant="contained"
-                    className="responsiveBtn checkoutBtn"
+                    button
+                    contained
+                    responsive
                     type="submit"
                     disabled={!(isValid && dirty)}
                   >

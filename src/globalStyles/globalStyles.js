@@ -8,14 +8,10 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
 }
-html { height: 100%; }
-body {
-    min-height:100%; 
-    position:relative; 
-    padding-bottom: 85px; 
-
-  
+html {
+    height: 100%;
 }
+
 button {
     cursor: pointer;
 }

@@ -32,8 +32,6 @@ export const getUserByUid = (uid, callback) => {
   usersCollection.get().then((snapshot) => {
     snapshot.forEach((el) => {
       if (el.id === uid) {
-        console.log(el.data());
-
         callback({
           ...el.data(),
           password: "",

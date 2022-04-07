@@ -20,24 +20,17 @@ export const H1 = styled.h1`
         font-size: ${({ theme }) => theme.fontSizes.xl};
       }
     `}
+
+    ${({ paymentWrapper__heading }) =>
+    paymentWrapper__heading &&
+    css`
+      font-size: ${({ theme }) => theme.fontSizes.xl};
+      text-align: center;
+      margin-bottom: 20px;
+    `}
 `;
 export const H2 = styled.h2`
-  ${({ loginHeading }) =>
-    loginHeading &&
-    css`
-      text-align: center;
-      margin: 20px 0;
-      font-size: ${({ theme }) => theme.fontSizes.l};
-    `}
-  ${({ registerHeading }) =>
-    registerHeading &&
-    css`
-      text-align: center;
-      margin: 20px 0;
-      font-size: ${({ theme }) => theme.fontSizes.l};
-    `}
-
-    ${({ productListItem }) =>
+  ${({ productListItem }) =>
     productListItem &&
     css`
       margin-bottom: 20px;
@@ -49,7 +42,7 @@ export const H2 = styled.h2`
       }
     `}
 
-    ${({ productInCart }) =>
+  ${({ productInCart }) =>
     productInCart &&
     css`
       font-size: ${({ theme }) => theme.fontSizes.xs};
@@ -83,24 +76,16 @@ export const H2 = styled.h2`
     `}
 `;
 export const H3 = styled.h3`
-  ${({ paymentWrapper__heading }) =>
-    paymentWrapper__heading &&
+  ${({ paymentWrapper__description }) =>
+    paymentWrapper__description &&
     css`
-      font-size: ${({ theme }) => theme.fontSizes.l};
+      font-size: ${({ theme }) => theme.fontSizes.m};
+      margin-top: 10px;
       text-align: center;
-      margin-bottom: 20px;
     `}
 `;
 export const H4 = styled.h4``;
-export const H5 = styled.h5`
-  ${({ paymentWrapper__orderValue }) =>
-    paymentWrapper__orderValue &&
-    css`
-      text-align: center;
-      font-size: ${({ theme }) => theme.fontSizes.m};
-      margin-top: 10px;
-    `}
-`;
+export const H5 = styled.h5``;
 export const H6 = styled.h6`
   ${({ paymentWrapper__description }) =>
     paymentWrapper__description &&

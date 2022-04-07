@@ -13,15 +13,12 @@ const LoginPage = () => {
 
   return (
     <>
-      <Div loginFormWrapper>
-        <Heading loginHeading headingType="h2">
-          Welcome back!
-        </Heading>
+      <Div formWrapper>
+        <Heading headingType="h1">Welcome back!</Heading>
         <Paragraph newCustomer>
           New customer?{" "}
           <RouterNavLink to={routes.register}>SIGN UP</RouterNavLink>
         </Paragraph>
-
         <LoginForm />
         <Paragraph forgottenPassword>Forgotten your password?</Paragraph>
       </Div>

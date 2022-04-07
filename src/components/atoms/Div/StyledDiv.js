@@ -1,18 +1,33 @@
 import styled, { css } from "styled-components";
 
 export const StyledDiv = styled.div`
+  ${({ formWrapper }) =>
+    formWrapper &&
+    css`
+      height: 100vh;
+      padding: 20vh 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    `}
+
   ${({ isHeaderWrapper }) =>
     isHeaderWrapper &&
     css`
-      position: fixed;
+      position: sticky;
       top: 0;
       z-index: 99;
-      width: 100vw;
+      width: 100%;
+      background: ${({ theme }) => theme.colors.white};
+      border-bottom: 2px solid ${({ theme }) => theme.colors.darkBlue};
+    `}
+
+  ${({ headerWrapper__content }) =>
+    headerWrapper__content &&
+    css`
       display: flex;
       justify-content: flex-end;
       max-width: 1200px;
       margin: 0 auto;
-      background: ${({ theme }) => theme.colors.white};
     `}
 
   ${({ isHeaderNavLink }) =>
@@ -20,12 +35,13 @@ export const StyledDiv = styled.div`
     css`
       z-index: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       position: fixed;
       background: ${({ theme }) => theme.colors.white};
-      width: 100vw;
       height: 100%;
+      width: 100%;
       transform: translateX(100%);
       transition: transform 0.3s 0.1s linear;
       &.active {
@@ -33,40 +49,13 @@ export const StyledDiv = styled.div`
       }
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        flex-direction: row;
+        width: fit-content;
         transform: translateX(0);
         height: 56px;
         align-items: center;
         justify-content: flex-end;
-        max-width: 1200px;
       }
-    `}
-
-
-    ${({ isLoginFormWrapper }) =>
-    isLoginFormWrapper &&
-    css`
-      width: 100%;
-      padding: 0 20px;
-      max-width: 400px;
-      margin: 0 auto;
-    `}
-
-    ${({ isRegisterFormWrapper }) =>
-    isRegisterFormWrapper &&
-    css`
-      width: 100%;
-      padding: 0 20px;
-      max-width: 400px;
-      margin: 0 auto;
-    `}
-
-    ${({ isContactWrapper }) =>
-    isContactWrapper &&
-    css`
-      width: 100%;
-      padding: 0 20px;
-      max-width: 400px;
-      margin: 0 auto;
     `}
 
     ${({ isContentWrapper }) =>
@@ -88,13 +77,14 @@ export const StyledDiv = styled.div`
       margin-top: 20px;
     `}
 
-    ${({ isRegisterTermsWrapper }) =>
-    isRegisterTermsWrapper &&
+    ${({ isTermsWrapper }) =>
+    isTermsWrapper &&
     css`
+      position: relative;
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin-top: 20px;
+      margin: 20px 0;
+      left: -10px;
     `}
     ${({ isHomeWrapper }) =>
     isHomeWrapper &&
@@ -102,22 +92,12 @@ export const StyledDiv = styled.div`
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      width: 100%;
-      margin-bottom: 20px;
+      max-width: 1200px;
+      margin: 20px auto 20px;
 
       @media (min-width: ${({ theme }) => theme.devices.desktop}) {
-        margin: 0;
+        margin: 40px auto 0;
       }
-    `}
-
-    ${({ isContactTermsWrapper }) =>
-    isContactTermsWrapper &&
-    css`
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-      left: -10px;
     `}
 
     ${({ isPlusMinusWrapper }) =>
@@ -181,10 +161,6 @@ export const StyledDiv = styled.div`
     ${({ isFooterSocial }) =>
     isFooterSocial &&
     css`
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
       display: grid;
       align-content: center;
       height: 85px;
@@ -233,25 +209,31 @@ export const StyledDiv = styled.div`
       z-index: 0;
       padding: 0 20px;
       max-width: 400px;
+      margin: 0 auto;
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
         width: 400px;
         padding: 0;
-        grid-area: 2 / 2;
+        grid-area: 2 / 1 / 2 / 3;
+        justify-self: center;
       }
     `}
 
     ${({ isCheckoutWrapper }) =>
     isCheckoutWrapper &&
     css`
+      height: 100%;
       display: grid;
       place-items: center;
       grid-template-columns: 1fr;
       grid-template-rows: 2fr auto auto;
+      margin-top: 20px;
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
+        height: 100vh;
+        margin: 0;
       }
     `}
 
@@ -259,14 +241,33 @@ export const StyledDiv = styled.div`
     isTotalCost &&
     css`
       margin: 20px 0;
+
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        grid-area: 2 / 2;
+        margin: 0;
+      }
     `}
 
     ${({ isSingleProductWrapper }) =>
     isSingleProductWrapper &&
     css`
+      padding: 10rem 5%;
       display: grid;
       place-items: center;
-      margin: 80px 10px 0;
+
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        padding: 15rem 0;
+      }
+    `}
+
+    ${({ singleProductContent }) =>
+    singleProductContent &&
+    css`
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      max-width: 1200px;
+      box-shadow: ${({ theme }) => theme.boxShadow};
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
         grid-template-columns: 1fr 1fr;
@@ -283,29 +284,69 @@ export const StyledDiv = styled.div`
     ${({ headerUl__dropdownMenu }) =>
     headerUl__dropdownMenu &&
     css`
+      display: none;
       position: absolute;
-      left: 0;
-      top: calc(100% + 0.25rem);
+      right: -50%;
+      text-align: center;
+      width: fit-content;
       background-color: ${({ theme }) => theme.colors.white};
-      padding: 0.75rem;
+      padding: 0.5rem;
       border-radius: 0.25rem;
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      /* pointer-events: none; */
-      transform: translateY(-10px)
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+      .dropdown:hover & {
+        display: block;
+      }
+
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        right: 0;
+      }
     `}
 
     ${({ paymentWrapper }) =>
     paymentWrapper &&
     css`
-      width: 100%;
-      padding: 10%;
+      max-width: 1400px;
+      margin: 20px auto 0;
+      padding: 0 10px;
+      min-height: calc(100vh - 56px - 85px);
+
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        padding: 0;
+      }
+    `}
+    
+    ${({ paymentWrapper__content }) =>
+    paymentWrapper__content &&
+    css`
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+    `}
+
+    ${({ paymentWrapper__info }) =>
+    paymentWrapper__info &&
+    css`
+      box-shadow: ${({ theme }) => theme.boxShadow};
+      padding: 20px;
+      height: fit-content;
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        grid-area: 1 / 1 / 1 / 1;
+        justify-self: center;
+      }
     `}
 
     ${({ paymentWrapper__cart }) =>
     paymentWrapper__cart &&
     css`
       margin: 15px 0 20px 0;
+
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        grid-area: 1 / 2 / 1 / 2;
+        margin: 0;
+        justify-self: center;
+      }
     `}
 `;

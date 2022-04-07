@@ -8,7 +8,6 @@ import HeaderTemplate from "../templates/HeaderTemplate";
 import RegisterPage from "../views/RegisterPage";
 import LoginPage from "../views/LoginPage";
 import SingleProduct from "../views/SingleProduct";
-import FooterSocial from "../components/molecules/FooterSocial";
 import Checkout from "../views/Checkout";
 import Orders from "../views/Orders";
 import Payment from "../views/Payment";
@@ -30,7 +29,6 @@ const Router = () => {
             <Route path={routes.payment} component={Payment} />
           </Switch>
         </HeaderTemplate>
-        <FooterSocial />
       </BrowserRouter>
     </>
   );

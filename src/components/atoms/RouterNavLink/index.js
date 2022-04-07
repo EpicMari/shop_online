@@ -7,6 +7,7 @@ const RouterNavLink = ({
   onClickFn,
   toProductsHome,
   checkoutCart,
+  headerUl__dropdownLink,
 }) => {
   return (
     <StyledNavLink
@@ -14,6 +15,7 @@ const RouterNavLink = ({
       onClick={onClickFn}
       isToProductsHome={toProductsHome}
       isCheckoutCart={checkoutCart}
+      headerUl__dropdownLink={headerUl__dropdownLink}
     >
       {children}
     </StyledNavLink>

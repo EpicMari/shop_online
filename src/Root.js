@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Router from "./routing/Router";
 import RootContext from "./context/RootContext";
 import { GlobalStyle } from "./globalStyles/globalStyles";
-import { Wrapper } from "./StyledRoot";
 import { ThemeProvider } from "styled-components";
 import { themes } from "./themes/themes";
 import { getProductsInCartFromLocalStorage } from "./helpers/localStorage";
@@ -110,7 +109,6 @@ const Root = () => {
         content_type: "product",
       })
       .then((res) => {
-        console.log(res);
         setContentfulData(res.items);
       })
       .catch((err) => console.log(err));
@@ -176,7 +174,6 @@ const Root = () => {
 
   const handlePriceRange = (e, newPrice) => {
     setPriceRange(newPrice);
-    console.log(newPrice, "PRICE");
   };
 
   const menuToggle = () => {
@@ -303,9 +300,7 @@ const Root = () => {
       <ThemeProvider theme={themes}>
         <StylesProvider injectFirst>
           <GlobalStyle />
-          <Wrapper>
-            <Router />
-          </Wrapper>
+          <Router />
         </StylesProvider>
       </ThemeProvider>
     </RootContext.Provider>

@@ -6,7 +6,6 @@ import Div from "../../atoms/Div";
 import { listsTypes } from "../../../types/listsTypes";
 
 const ProductsList = ({ productsArray, listType }) => {
-  console.log(productsArray, "PRODUCTS");
   return (
     <Div productsListWrapper>
       <Ul productsList>
