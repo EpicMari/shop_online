@@ -10,6 +10,10 @@ export const H1 = styled.h1`
       font-weight: 400;
       margin: 20px 0 10px;
       width: 100%;
+
+      @media (min-width: ${({ theme }) => theme.devices.desktop}) {
+        margin: 20px 0;
+      }
     `}
 
   ${({ emptyCart }) =>

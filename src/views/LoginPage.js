@@ -17,7 +17,9 @@ const LoginPage = () => {
         <Heading headingType="h1">Welcome back!</Heading>
         <Paragraph newCustomer>
           New customer?{" "}
-          <RouterNavLink to={routes.register}>SIGN UP</RouterNavLink>
+          <RouterNavLink headerUl__dropdownLink to={routes.register}>
+            SIGN UP
+          </RouterNavLink>
         </Paragraph>
         <LoginForm />
         <Paragraph forgottenPassword>Forgotten your password?</Paragraph>

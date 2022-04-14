@@ -24,7 +24,6 @@ const Root = () => {
   const [priceRange, setPriceRange] = useState([]);
   const [genderChoice, setGenderChoice] = useState("");
   const [deliveryMethod, setDeliveryMethod] = useState(0);
-  // const [openNotification, setOpenNotification] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState({});
   const [isOrderPaid, setIsOrderPaid] = useState(false);

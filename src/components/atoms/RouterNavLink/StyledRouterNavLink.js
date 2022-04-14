@@ -6,7 +6,7 @@ export const StyledNavLink = styled(NavLink)`
     isToProductsHome &&
     css`
       border: 1px solid ${({ theme }) => theme.colors.darkKhaki};
-      margin-top: 10px;
+      margin-top: 5px;
       padding: 20px;
       width: 250px;
       text-align: center;
@@ -16,6 +16,10 @@ export const StyledNavLink = styled(NavLink)`
       &:hover {
         background: ${({ theme }) => theme.colors.darkKhaki};
         color: ${({ theme }) => theme.colors.white};
+      }
+
+      @media (min-width: ${({ theme }) => theme.devices.desktop}) {
+        margin-top: 15px;
       }
     `}
 

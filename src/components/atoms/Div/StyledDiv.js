@@ -16,7 +16,6 @@ export const StyledDiv = styled.div`
       position: sticky;
       top: 0;
       z-index: 99;
-      width: 100%;
       background: ${({ theme }) => theme.colors.white};
       border-bottom: 2px solid ${({ theme }) => theme.colors.darkBlue};
     `}
@@ -50,6 +49,7 @@ export const StyledDiv = styled.div`
 
       @media (min-width: ${({ theme }) => theme.devices.laptop}) {
         flex-direction: row;
+        top: 0;
         width: fit-content;
         transform: translateX(0);
         height: 56px;
@@ -74,7 +74,7 @@ export const StyledDiv = styled.div`
     ${({ isDeliveryMethod }) =>
     isDeliveryMethod &&
     css`
-      margin-top: 20px;
+      margin: 20px 0 10px;
     `}
 
     ${({ isTermsWrapper }) =>
@@ -90,14 +90,10 @@ export const StyledDiv = styled.div`
     isHomeWrapper &&
     css`
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 20px auto 20px;
-
-      @media (min-width: ${({ theme }) => theme.devices.desktop}) {
-        margin: 40px auto 0;
-      }
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: 40px;
     `}
 
     ${({ isPlusMinusWrapper }) =>
@@ -148,6 +144,8 @@ export const StyledDiv = styled.div`
 
       @media (min-width: ${({ theme }) => theme.devices.desktop}) {
         flex-direction: row;
+        max-width: 1200px;
+        margin: 0 auto;
       }
     `}
 
@@ -186,6 +184,8 @@ export const StyledDiv = styled.div`
 
       @media (min-width: ${({ theme }) => theme.devices.desktop}) {
         flex-direction: row-reverse;
+        max-width: 1200px;
+        margin: 0 auto;
       }
     `}
 
@@ -215,7 +215,7 @@ export const StyledDiv = styled.div`
         width: 400px;
         padding: 0;
         grid-area: 2 / 1 / 2 / 3;
-        justify-self: center;
+        align-self: center;
       }
     `}
 
@@ -223,6 +223,7 @@ export const StyledDiv = styled.div`
     isCheckoutWrapper &&
     css`
       height: 100%;
+      max-width: 1400px;
       display: grid;
       place-items: center;
       grid-template-columns: 1fr;
@@ -233,7 +234,7 @@ export const StyledDiv = styled.div`
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
         height: 100vh;
-        margin: 0;
+        margin: 0 auto;
       }
     `}
 

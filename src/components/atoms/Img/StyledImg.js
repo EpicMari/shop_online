@@ -49,6 +49,10 @@ export const StyledImg = styled.img`
       max-height: 420px;
       object-fit: cover;
       object-position: bottom;
+
+      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+        max-width: 1200px;
+      }
     `}
 
     ${({ isNewArrivalsImg }) =>
@@ -59,7 +63,7 @@ export const StyledImg = styled.img`
       margin: 10px 0;
 
       @media (min-width: ${({ theme }) => theme.devices.desktop}) {
-        margin: 0 10px 20px;
+        margin: 0 10px 0;
       }
     `}
 

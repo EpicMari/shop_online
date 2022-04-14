@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useContext } from "react";
+import emailjs from "emailjs-com";
 import Div from "../components/atoms/Div";
 import RootContext from "../context/RootContext";
 import Paragraph from "../components/atoms/Paragraph";
-import Ul from "../components/atoms/Ul";
-import Li from "../components/atoms/Li";
-import Img from "../components/atoms/Img";
 import Heading from "../components/atoms/Heading";
 import { createOrderInFireStore } from "../firebase/firestoreUtils";
 import { Redirect } from "react-router-dom";
 import { routes } from "../routes";
+import CartOrder from "../components/molecules/CartOrder";
 
 const Payment = ({
   location: {
@@ -34,6 +33,17 @@ const Payment = ({
     showNotification,
   } = useContext(RootContext);
   const paypal = useRef();
+
+  const sendEmail = (values) => {
+    emailjs
+      .send(
+        `${process.env.REACT_APP_SERVICE_ID}`,
+        `${process.env.REACT_APP_ORDER_TEMPLATE}`,
+        values,
+        `${process.env.REACT_APP_USER_ID}`
+      )
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     window.paypal
@@ -67,6 +77,7 @@ const Payment = ({
           });
 
           order.status === "COMPLETED" && handleOrderPaid(true);
+          sendEmail({ email, firstName, lastName });
           resetCart();
           showNotification("Successful payment", "info");
         },
@@ -76,6 +87,20 @@ const Payment = ({
       })
       .render(paypal.current);
   }, []);
+
+  const deliveryName = () => {
+    console.log(deliveryMethod);
+    switch (deliveryMethod) {
+      case "5":
+        return "InPost";
+      case "8":
+        return "DHL";
+      case "6":
+        return "FedEx";
+      default:
+        return "DPD";
+    }
+  };
 
   return (
     <>
@@ -99,25 +124,14 @@ const Payment = ({
             </Paragraph>
             <Paragraph paymentWrapper__text>Country: {country}</Paragraph>
             <Paragraph paymentWrapper__text>
-              Delivery method: {deliveryMethod}
+              Delivery method: {deliveryName()}
             </Paragraph>
           </Div>
           <Div paymentWrapper__cart>
             <Heading headingType="h3" paymentWrapper__description>
               Cart
             </Heading>
-            <Ul>
-              {cart.map((item) => {
-                return (
-                  <Li paymentWrapper__cartItem>
-                    <Img cartImg src={item.image} alt={item.name} />
-                    <Paragraph paymentWrapper__cartItemName>
-                      {item.name} {item.price * item.inCartQuantity}$
-                    </Paragraph>
-                  </Li>
-                );
-              })}
-            </Ul>
+            <CartOrder cartItems={cart} />
             <Heading headingType="h3" paymentWrapper__description>
               Total cost: {orderValue}
             </Heading>

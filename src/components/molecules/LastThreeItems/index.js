@@ -1,5 +1,4 @@
 import React from "react";
-import { routes } from "../../../routes";
 import Div from "../../atoms/Div";
 import Img from "../../atoms/Img";
 import RouterNavLink from "../../atoms/RouterNavLink";

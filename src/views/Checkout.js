@@ -23,6 +23,7 @@ import { checkoutFormSchema } from "../utils/validationSchema";
 import Payment from "./Payment";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { routes } from "../routes";
+import CartOrder from "../components/molecules/CartOrder";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -35,17 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Checkout = () => {
-  const {
-    handleDeliveryMethod,
-    deliveryMethod,
-    orderValue,
-    userData,
-    isOrderPaid,
-    handleOrderPaid,
-    currentUser,
-    cart,
-    resetCart,
-  } = useContext(RootContext);
+  const { orderValue, userData, isOrderPaid, cart } = useContext(RootContext);
 
   const [formValid, setFormValid] = useState(false);
 
@@ -72,7 +63,6 @@ const Checkout = () => {
               }}
               validationSchema={checkoutFormSchema}
               onSubmit={(values, { resetForm }) => {
-                // isOrderPaid && resetCart();
                 setFormValid(true);
                 isOrderPaid && resetForm();
               }}
@@ -169,9 +159,6 @@ const Checkout = () => {
                       {countries.map((c) => {
                         return <MenuItem value={c.label}>{c.label}</MenuItem>;
                       })}
-                      {/* <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem> */}
                     </Select>
                   </FormControl>
                   <ErrorMessage name="country" component={CustomMessageError} />
@@ -230,6 +217,7 @@ const Checkout = () => {
             </Formik>
           </Div>
         </Div>
+        <CartOrder cartItems={cart} />
         <Div totalCost>
           <Heading headingType="h3">Total cost: {orderValue}$</Heading>
         </Div>

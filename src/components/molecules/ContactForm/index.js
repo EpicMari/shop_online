@@ -36,7 +36,7 @@ const ContactForm = () => {
         emailjs
           .send(
             `${process.env.REACT_APP_SERVICE_ID}`,
-            `${process.env.REACT_APP_TEMPLATE_ID}`,
+            `${process.env.REACT_APP_MESSAGE_TEMPLATE}`,
             values,
             `${process.env.REACT_APP_USER_ID}`
           )
