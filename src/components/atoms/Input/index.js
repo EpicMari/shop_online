@@ -10,10 +10,7 @@ const Input = ({
   name,
   value,
   onChangeFn,
-  loginInput,
-  registerInput,
-  contactInput,
-  searchInput,
+  form,
 }) => {
   return inputType === "material" ? (
     <StyledInputMaterial
@@ -24,10 +21,7 @@ const Input = ({
       name={name}
       value={value}
       onChange={onChangeFn}
-      loginInput={loginInput}
-      registerInput={registerInput}
-      contactInput={contactInput}
-      searchInput={searchInput}
+      form={form}
     />
   ) : (
     <input type={type} />

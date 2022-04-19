@@ -11,7 +11,7 @@ const Span = ({
   return (
     <StyledSpan
       isBtnCartContent={btnCartContent}
-      isToProductsHome={toProductsHome}
+      toProductsHome={toProductsHome}
       isHeaderAmountHeader={headerAmountHeader}
       isHeaderAmountProductsInCart={headerAmountProductsInCart}
     >

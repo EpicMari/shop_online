@@ -7,13 +7,16 @@ import RootContext from "../../../context/RootContext";
 import ProductsList from "../ProductsList";
 import { listsTypes } from "../../../types/listsTypes";
 import Div from "../../atoms/Div";
-import Heading from "../../atoms/Heading";
-import Paragraph from "../../atoms/Paragraph";
 import CloseIcon from "@material-ui/icons/Close";
-import IconButton from "../../atoms/IconButton";
 import Button from "../../atoms/Button";
 import { routes } from "../../../routes";
-import RouterNavLink from "../../atoms/RouterNavLink";
+import {
+  StyledCloseIcon,
+  StyledHeadingAlert,
+  StyledHeadingName,
+  StyledNavLinkButton,
+  StyledParagraphCost,
+} from "./StyledCart";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -55,30 +58,29 @@ const Cart = () => {
     >
       <Fade in={isCartOpen}>
         <Div className={classes.paper}>
-          <IconButton closeModal onClickFn={handleCartClose}>
+          <StyledCloseIcon onClick={handleCartClose}>
             <CloseIcon />
-          </IconButton>
+          </StyledCloseIcon>
           {cart.length !== 0 ? (
             <>
-              <Heading cartHeading headingType="h2" id="transition-modal-title">
+              <StyledHeadingName id="transition-modal-title">
                 Cart
-              </Heading>
+              </StyledHeadingName>
               <ProductsList productsArray={cart} listType={listsTypes.cart} />
-              <Paragraph totalCostCart>Total: {cartTotal}$</Paragraph>
-              <RouterNavLink
+              <StyledParagraphCost>Total: {cartTotal}$</StyledParagraphCost>
+              <StyledNavLinkButton
                 to={routes.checkout}
-                onClickFn={handleCartClose}
-                checkoutCart
+                onClick={handleCartClose}
               >
                 <Button button contained responsive>
                   Checkout
                 </Button>
-              </RouterNavLink>
+              </StyledNavLinkButton>
             </>
           ) : (
-            <Heading headingType="h1" emptyCart>
+            <StyledHeadingAlert headingType="h1">
               Your cart is empty
-            </Heading>
+            </StyledHeadingAlert>
           )}
         </Div>
       </Fade>

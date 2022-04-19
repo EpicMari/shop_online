@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import PriceSlider from "../PriceSlider";
 import CategoryProductsFilter from "../CategoryProductsFilter";
-import Div from "../../atoms/Div";
+import { StyledWrapper } from "./StyledModalFilter";
 
 const ModalFilter = () => {
   const useStyles = makeStyles((theme) => ({
@@ -33,7 +33,7 @@ const ModalFilter = () => {
   };
 
   return (
-    <Div modalFilter>
+    <StyledWrapper>
       <Button button contained responsive onClickFn={handleClickOpen}>
         Filter
       </Button>
@@ -51,7 +51,7 @@ const ModalFilter = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Div>
+    </StyledWrapper>
   );
 };
 

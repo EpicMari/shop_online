@@ -1,60 +1,63 @@
 import React from "react";
-import { H1, H2, H3, H4, H5, H6 } from "./StyledHeading";
+import {
+  StyledH1,
+  StyledH2,
+  StyledH3,
+  StyledH4,
+  StyledH5,
+  StyledH6,
+} from "./StyledHeading";
 
 const Heading = ({
   headingType,
   children,
-  productListItem,
   cartHeading,
   headingHomeNewItems,
   homeHeadingAbout,
   productInCart,
   emptyCart,
-  paymentWrapper__heading,
   paymentWrapper__description,
 }) => {
   const _renderHeading = () => {
     switch (headingType) {
       case "h1":
         return (
-          <H1
+          <StyledH1
             headingHomeNewItems={headingHomeNewItems}
             emptyCart={emptyCart}
-            paymentWrapper__heading={paymentWrapper__heading}
           >
             {children}
-          </H1>
+          </StyledH1>
         );
       case "h2":
         return (
-          <H2
-            productListItem={productListItem}
+          <StyledH2
             cartHeading={cartHeading}
             homeHeadingAbout={homeHeadingAbout}
             productInCart={productInCart}
           >
             {children}
-          </H2>
+          </StyledH2>
         );
       case "h3":
         return (
-          <H3 paymentWrapper__description={paymentWrapper__description}>
+          <StyledH3 paymentWrapper__description={paymentWrapper__description}>
             {children}
-          </H3>
+          </StyledH3>
         );
       case "h4":
-        return <H4>{children}</H4>;
+        return <StyledH4>{children}</StyledH4>;
       case "h5":
-        return <H5>{children}</H5>;
+        return <StyledH5>{children}</StyledH5>;
       case "h6":
         return (
-          <H6 paymentWrapper__description={paymentWrapper__description}>
+          <StyledH6 paymentWrapper__description={paymentWrapper__description}>
             {children}
-          </H6>
+          </StyledH6>
         );
 
       default:
-        return <H3>{children}</H3>;
+        return <StyledH3>{children}</StyledH3>;
     }
   };
 

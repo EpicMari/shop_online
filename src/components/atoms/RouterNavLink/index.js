@@ -1,22 +1,9 @@
 import React from "react";
 import { StyledNavLink } from "./StyledRouterNavLink";
 
-const RouterNavLink = ({
-  children,
-  to,
-  onClickFn,
-  toProductsHome,
-  checkoutCart,
-  headerUl__dropdownLink,
-}) => {
+const RouterNavLink = ({ children, to, link, onClickFn, button }) => {
   return (
-    <StyledNavLink
-      to={to}
-      onClick={onClickFn}
-      isToProductsHome={toProductsHome}
-      isCheckoutCart={checkoutCart}
-      headerUl__dropdownLink={headerUl__dropdownLink}
-    >
+    <StyledNavLink to={to} onClick={onClickFn} link={link} button={button}>
       {children}
     </StyledNavLink>
   );

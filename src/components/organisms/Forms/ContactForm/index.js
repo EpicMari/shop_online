@@ -1,13 +1,13 @@
 import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import emailjs from "emailjs-com";
-import Button from "../../atoms/Button";
-import Input from "../../atoms/Input";
-import { contactFormSchema } from "../../../utils/validationSchema";
-import Form from "../../atoms/Form";
-import Paragraph from "../../atoms/Paragraph";
-import Div from "../../atoms/Div";
-import CustomMessageError from "../../atoms/CustomMessageError";
+import Button from "../../../atoms/Button";
+import Input from "../../../atoms/Input";
+import { contactFormSchema } from "../../../../utils/validationSchema";
+import Form from "../../../atoms/Form";
+import Paragraph from "../../../atoms/Paragraph";
+import Div from "../../../atoms/Div";
+import CustomMessageError from "../../../atoms/CustomMessageError";
 import { withStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 
@@ -53,7 +53,7 @@ const ContactForm = () => {
             name="nameAndSurname"
             value={values.nameAndSurname}
             onChangeFn={handleChange}
-            contactInput
+            form="true"
           />
           <ErrorMessage name="nameAndSurname" component={CustomMessageError} />
           <Input
@@ -62,7 +62,7 @@ const ContactForm = () => {
             name="email"
             value={values.email}
             onChangeFn={handleChange}
-            contactInput
+            form="true"
           />
           <ErrorMessage name="email" component={CustomMessageError} />
           <Input
@@ -71,7 +71,7 @@ const ContactForm = () => {
             name="subject"
             value={values.subject}
             onChangeFn={handleChange}
-            contactInput
+            form="true"
           />
           <ErrorMessage name="subject" component={CustomMessageError} />
           <Input
@@ -82,16 +82,16 @@ const ContactForm = () => {
             name="message"
             value={values.message}
             onChangeFn={handleChange}
-            contactInput
+            form="true"
           />
           <ErrorMessage name="message" component={CustomMessageError} />
-          <Div termsWrapper>
+          <Div terms>
             <CustomCheckbox
               name="acceptTerms"
               checked={values.acceptTerms}
               onChange={handleChange}
             />
-            <Paragraph> Accept privacy policy and terms</Paragraph>
+            <Paragraph size="s"> Accept privacy policy and terms</Paragraph>
           </Div>
           <ErrorMessage name="acceptTerms" component={CustomMessageError} />
           <Button button contained responsive type="submit">

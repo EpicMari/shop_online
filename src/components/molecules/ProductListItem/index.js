@@ -2,16 +2,21 @@ import React, { useContext } from "react";
 import RootContext from "../../../context/RootContext";
 import { listsTypes } from "../../../types/listsTypes";
 import Button from "../../atoms/Button";
-import Heading from "../../atoms/Heading";
-import Paragraph from "../../atoms/Paragraph";
-import Img from "../../atoms/Img";
 import RouterNavLink from "../../atoms/RouterNavLink";
-import Div from "../../atoms/Div";
-import Span from "../../atoms/Span";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import IconButton from "../../atoms/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import {
+  StyledImageBox,
+  StyledImageCart,
+  StyledImageProducts,
+  StyledParagraphPrice,
+  StyledParagraphQuantity,
+  StyledPlusMinusBox,
+  StyledProductName,
+  StyledProductNameCart,
+} from "./StyledProductListItem";
+import { IconButton } from "@material-ui/core";
 
 const ProductListItem = ({
   name,
@@ -48,24 +53,20 @@ const ProductListItem = ({
               },
             }}
           >
-            <Heading productListItem headingType="h2">
-              {name}
-            </Heading>
-            <Img productImg src={image} alt={name} />
+            <StyledProductName>{name}</StyledProductName>
+            <StyledImageProducts src={image} alt={name} />
           </RouterNavLink>
-          <Paragraph priceItem>{price}$</Paragraph>
+          <StyledParagraphPrice size="s">{price}$</StyledParagraphPrice>
         </>
       ) : (
         <>
-          <Div cartImgHeadingWrapper>
+          <StyledImageBox>
             <RouterNavLink to={`/product/${name.replace(/\s/g, "")}`}>
-              <Img cartImg src={image} alt={name} />
+              <StyledImageCart src={image} alt={name} />
             </RouterNavLink>
-          </Div>
-          <Heading productInCart headingType="h2">
-            {name}
-          </Heading>
-          <Paragraph priceItemInCart>{price}$</Paragraph>
+          </StyledImageBox>
+          <StyledProductNameCart headingType="h2">{name}</StyledProductNameCart>
+          <StyledParagraphPrice>{price}$</StyledParagraphPrice>
         </>
       )}
       {renderButton()}
@@ -75,28 +76,26 @@ const ProductListItem = ({
     <>
       {listType === listsTypes.cart ? (
         <>
-          <Div plusMinusWrapper>
-            <Button
-              btnInCart
+          <StyledPlusMinusBox>
+            <IconButton
+              aria-label="Delete"
               disabled={inCartQuantity <= 1}
-              onClickFn={() => handleProductQuantityInCart(id, "decrease")}
+              onClick={() => handleProductQuantityInCart(id, "decrease")}
             >
-              <Span btnCartContent>
-                <RemoveIcon />
-              </Span>
-            </Button>
-            <Paragraph showCartQuantityItem>{inCartQuantity}</Paragraph>
-            <Button
-              btnInCart
+              <RemoveIcon />
+            </IconButton>
+            <StyledParagraphQuantity size="s">
+              {inCartQuantity}
+            </StyledParagraphQuantity>
+            <IconButton
+              aria-label="Add"
               disabled={quantity === inCartQuantity}
-              onClickFn={() => addProductToCart(id)}
+              onClick={() => addProductToCart(id)}
             >
-              <Span btnCartContent>
-                <AddIcon />
-              </Span>
-            </Button>
-          </Div>
-          <IconButton deleteItem onClickFn={() => deleteProductFromCart(id)}>
+              <AddIcon />
+            </IconButton>
+          </StyledPlusMinusBox>
+          <IconButton onClick={() => deleteProductFromCart(id)}>
             <CloseIcon />
           </IconButton>
         </>

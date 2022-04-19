@@ -1,22 +1,17 @@
 import React from "react";
-import { StyledButton, StyledButtonMaterial } from "./StyledButton";
+import { StyledButton } from "./StyledButton";
 
 const Button = ({
   className,
   children,
   color,
-  btnType,
-  variant,
   type = "button",
   onClickFn,
   disabled,
   buttonHeader,
   loginBtn,
-  registerBtn,
-  contactBtn,
   btnInCart,
   buttonHeaderMenu,
-  href,
   headerUl__dropdownBtn,
   headerUl__signOut,
   addProductToCart,
@@ -24,25 +19,10 @@ const Button = ({
   contained,
   responsive,
   animation,
-  singleProductBtn,
 }) => {
-  return btnType === "material" ? (
-    <StyledButtonMaterial
-      className={className}
-      type={type}
-      color={color}
-      variant={variant}
-      onClick={onClickFn}
-      disabled={disabled}
-      loginBtn={loginBtn}
-      registerBtn={registerBtn}
-      contactBtn={contactBtn}
-      href={href}
-    >
-      {children}
-    </StyledButtonMaterial>
-  ) : (
+  return (
     <StyledButton
+      type={type}
       className={className}
       color={color}
       onClick={onClickFn}
@@ -58,7 +38,6 @@ const Button = ({
       responsive={responsive}
       animation={animation}
       loginBtn={loginBtn}
-      singleProductBtn={singleProductBtn}
     >
       {children}
     </StyledButton>

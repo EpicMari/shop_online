@@ -1,13 +1,21 @@
 import React, { useRef, useEffect, useContext } from "react";
 import emailjs from "emailjs-com";
-import Div from "../components/atoms/Div";
-import RootContext from "../context/RootContext";
-import Paragraph from "../components/atoms/Paragraph";
-import Heading from "../components/atoms/Heading";
-import { createOrderInFireStore } from "../firebase/firestoreUtils";
+import RootContext from "../../context/RootContext";
+import { createOrderInFireStore } from "../../firebase/firestoreUtils";
 import { Redirect } from "react-router-dom";
-import { routes } from "../routes";
-import CartOrder from "../components/molecules/CartOrder";
+import { routes } from "../../routes";
+import CartOrder from "../../components/molecules/CartOrder";
+import {
+  StyledAddress,
+  StyledCartBox,
+  StyledCartTotalInfo,
+  StyledContentBox,
+  StyledInfoBox,
+  StyledParagraph,
+  StyledPaymentHeading,
+  StyledPaypalBox,
+  StyledWrapper,
+} from "./StyledPayment";
 
 const Payment = ({
   location: {
@@ -86,10 +94,18 @@ const Payment = ({
         },
       })
       .render(paypal.current);
-  }, []);
+  }, [
+    cart,
+    email,
+    firstName,
+    handleOrderPaid,
+    lastName,
+    orderValue,
+    resetCart,
+    showNotification,
+  ]);
 
   const deliveryName = () => {
-    console.log(deliveryMethod);
     switch (deliveryMethod) {
       case "5":
         return "InPost";
@@ -104,43 +120,39 @@ const Payment = ({
 
   return (
     <>
-      <Div paymentWrapper>
-        <Heading headingType="h1" paymentWrapper__heading>
-          Summary
-        </Heading>
-        <Div paymentWrapper__content>
-          <Div paymentWrapper__info>
-            <Heading headingType="h3">Delivery address</Heading>
-            <Paragraph paymentWrapper__text>First name: {firstName}</Paragraph>
-            <Paragraph paymentWrapper__text>Last name: {lastName}</Paragraph>
-            <Paragraph paymentWrapper__text>E-mail: {email}</Paragraph>
-            <Paragraph paymentWrapper__text>
+      <StyledWrapper>
+        <StyledPaymentHeading headingType="h1">Summary</StyledPaymentHeading>
+        <StyledContentBox>
+          <StyledInfoBox>
+            <StyledAddress headingType="h3">Delivery address</StyledAddress>
+            <StyledParagraph size="s">First name: {firstName}</StyledParagraph>
+            <StyledParagraph size="s">Last name: {lastName}</StyledParagraph>
+            <StyledParagraph size="s">E-mail: {email}</StyledParagraph>
+            <StyledParagraph size="s">
               Phone number: {phoneNumber}
-            </Paragraph>
-            <Paragraph paymentWrapper__text>Address: {address}</Paragraph>
-            <Paragraph paymentWrapper__text>City: {city}</Paragraph>
-            <Paragraph paymentWrapper__text>
+            </StyledParagraph>
+            <StyledParagraph size="s">Address: {address}</StyledParagraph>
+            <StyledParagraph size="s">City: {city}</StyledParagraph>
+            <StyledParagraph size="s">
               Postal code: {postalCode}
-            </Paragraph>
-            <Paragraph paymentWrapper__text>Country: {country}</Paragraph>
-            <Paragraph paymentWrapper__text>
+            </StyledParagraph>
+            <StyledParagraph size="s">Country: {country}</StyledParagraph>
+            <StyledParagraph size="s">
               Delivery method: {deliveryName()}
-            </Paragraph>
-          </Div>
-          <Div paymentWrapper__cart>
-            <Heading headingType="h3" paymentWrapper__description>
-              Cart
-            </Heading>
+            </StyledParagraph>
+          </StyledInfoBox>
+          <StyledCartBox>
+            <StyledCartTotalInfo headingType="h3">Cart</StyledCartTotalInfo>
             <CartOrder cartItems={cart} />
-            <Heading headingType="h3" paymentWrapper__description>
+            <StyledCartTotalInfo headingType="h3">
               Total cost: {orderValue}
-            </Heading>
-          </Div>
-          <Div paypalButtons>
+            </StyledCartTotalInfo>
+          </StyledCartBox>
+          <StyledPaypalBox>
             <div ref={paypal}></div>
-          </Div>
-        </Div>
-      </Div>
+          </StyledPaypalBox>
+        </StyledContentBox>
+      </StyledWrapper>
       {isOrderPaid && <Redirect to={routes.home} />}
     </>
   );

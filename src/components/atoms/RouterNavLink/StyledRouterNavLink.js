@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const StyledNavLink = styled(NavLink)`
-  ${({ isToProductsHome }) =>
-    isToProductsHome &&
+  ${({ button }) =>
+    button &&
     css`
       border: 1px solid ${({ theme }) => theme.colors.darkKhaki};
       margin-top: 5px;
@@ -23,8 +23,8 @@ export const StyledNavLink = styled(NavLink)`
       }
     `}
 
-  ${({ headerUl__dropdownLink }) =>
-    headerUl__dropdownLink &&
+  ${({ link }) =>
+    link &&
     css`
       padding: 10px;
       color: ${({ theme }) => theme.colors.darkBlue};
@@ -36,19 +36,6 @@ export const StyledNavLink = styled(NavLink)`
 
       @media (min-width: ${({ theme }) => theme.devices.tablet}) {
         font-size: ${({ theme }) => theme.fontSizes.m};
-      }
-    `}
-
-  ${({ isCheckoutCart }) =>
-    isCheckoutCart &&
-    css`
-      position: absolute;
-      right: 15px;
-      bottom: 25px;
-
-      @media (min-width: ${({ theme }) => theme.devices.laptop}) {
-        right: 20px;
-        bottom: 20px;
       }
     `}
 `;

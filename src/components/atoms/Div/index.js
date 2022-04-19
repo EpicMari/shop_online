@@ -4,6 +4,8 @@ import { StyledDiv } from "./StyledDiv";
 const Div = ({
   children,
   className,
+  form,
+  terms,
   headerWrapper,
   headerNavLink,
   loginFormWrapper,
@@ -41,6 +43,8 @@ const Div = ({
   return (
     <StyledDiv
       className={className}
+      form={form}
+      terms={terms}
       isHeaderWrapper={headerWrapper}
       isHeaderNavLink={headerNavLink}
       isLoginFormWrapper={loginFormWrapper}

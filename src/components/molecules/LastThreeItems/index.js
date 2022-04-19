@@ -10,6 +10,7 @@ const LastThreeItems = ({ productsArray }) => {
         return (
           i < 3 && (
             <RouterNavLink
+              key={item.name}
               to={{
                 pathname: `/product/${item.name.replace(/\s/g, "")}`,
                 state: {
@@ -27,29 +28,3 @@ const LastThreeItems = ({ productsArray }) => {
 };
 
 export default LastThreeItems;
-
-// if (productsArray.length - productsArray.length === i) {
-//   return (
-//     <RouterNavLink to={{
-
-//     }}>
-//       <Img newArrivalsImg src={item.image} alt={item.name} />
-//     </RouterNavLink>
-//   );
-// } else if (productsArray.length - (productsArray.length - 1) === i) {
-//   return (
-//     <RouterNavLink to={{
-
-//     }}>
-//       <Img newArrivalsImg src={item.image} alt={item.name} />
-//     </RouterNavLink>
-//   );
-// } else if (productsArray.length - (productsArray.length - 2) === i) {
-//   return (
-//     <RouterNavLink to={{
-
-//     }}>
-//       <Img newArrivalsImg src={item.image} alt={item.name} />
-//     </RouterNavLink>
-//   );
-// }

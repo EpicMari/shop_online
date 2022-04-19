@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
-import { auth } from "../../../firebase/firebaseConfig";
+import React from "react";
+import { auth } from "../../../../firebase/firebaseConfig";
 import { Formik, ErrorMessage } from "formik";
-import { registerFormSchema } from "../../../utils/validationSchema";
-import Form from "../../atoms/Form";
-import Input from "../../atoms/Input";
-import Button from "../../atoms/Button";
+import { registerFormSchema } from "../../../../utils/validationSchema";
+import Form from "../../../atoms/Form";
+import Input from "../../../atoms/Input";
+import Button from "../../../atoms/Button";
 import Select from "@material-ui/core/Select";
-import Paragraph from "../../atoms/Paragraph";
-import Div from "../../atoms/Div";
-import { createUserInCollection } from "../../../firebase/firestoreUtils";
+import Paragraph from "../../../atoms/Paragraph";
+import { createUserInCollection } from "../../../../firebase/firestoreUtils";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import CustomMessageError from "../../atoms/CustomMessageError";
+import CustomMessageError from "../../../atoms/CustomMessageError";
 import Checkbox from "@material-ui/core/Checkbox";
+import Div from "../../../atoms/Div";
 
 const RegisterForm = () => {
   const useStyles = makeStyles(() => ({
@@ -70,7 +70,7 @@ const RegisterForm = () => {
               name="firstName"
               value={values.firstName}
               onChangeFn={handleChange}
-              registerInput
+              form="true"
             />
             <ErrorMessage name="firstName" component={CustomMessageError} />
             <Input
@@ -79,7 +79,7 @@ const RegisterForm = () => {
               name="lastName"
               value={values.lastName}
               onChangeFn={handleChange}
-              registerInput
+              form="true"
             />
             <ErrorMessage name="lastName" component={CustomMessageError} />
             <Input
@@ -88,7 +88,7 @@ const RegisterForm = () => {
               name="email"
               value={values.email}
               onChangeFn={handleChange}
-              registerInput
+              form="true"
             />
             <ErrorMessage name="email" component={CustomMessageError} />
             <Input
@@ -98,7 +98,7 @@ const RegisterForm = () => {
               type="password"
               value={values.password}
               onChangeFn={handleChange}
-              registerInput
+              form="true"
             />
             <ErrorMessage name="password" component={CustomMessageError} />
             <Input
@@ -108,7 +108,7 @@ const RegisterForm = () => {
               type="password"
               value={values.passwordConfirmation}
               onChangeFn={handleChange}
-              registerInput
+              form="true"
             />
             <ErrorMessage
               name="passwordConfirmation"
@@ -128,15 +128,13 @@ const RegisterForm = () => {
               </Select>
             </FormControl>
             <ErrorMessage name="gender" component={CustomMessageError} />
-            <Div termsWrapper>
+            <Div terms>
               <CustomCheckbox
                 name="acceptTerms"
                 checked={values.acceptTerms}
                 onChange={handleChange}
               />
-              <Paragraph registerTerms>
-                Accept privacy policy and terms
-              </Paragraph>
+              <Paragraph size="s">Accept privacy policy and terms</Paragraph>
             </Div>
             <ErrorMessage name="acceptTerms" component={CustomMessageError} />
             <Button button contained responsive type="submit">

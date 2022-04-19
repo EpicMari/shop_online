@@ -2,13 +2,13 @@ import { ErrorMessage, Formik } from "formik";
 import React from "react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { auth } from "../../../firebase/firebaseConfig";
-import { routes } from "../../../routes";
-import { loginFormSchema } from "../../../utils/validationSchema";
-import Form from "../../atoms/Form";
-import Button from "../../atoms/Button";
-import Input from "../../atoms/Input";
-import CustomMessageError from "../../atoms/CustomMessageError";
+import { auth } from "../../../../firebase/firebaseConfig";
+import { routes } from "../../../../routes";
+import { loginFormSchema } from "../../../../utils/validationSchema";
+import Form from "../../../atoms/Form";
+import Button from "../../../atoms/Button";
+import Input from "../../../atoms/Input";
+import CustomMessageError from "../../../atoms/CustomMessageError";
 
 const LoginForm = () => {
   const [isRedirect, setIsRedirect] = useState(false);
@@ -37,7 +37,7 @@ const LoginForm = () => {
               name="email"
               value={values.email}
               onChangeFn={handleChange}
-              loginInput
+              form="true"
             />
             <ErrorMessage name="email" component={CustomMessageError} />
             <Input
@@ -47,7 +47,7 @@ const LoginForm = () => {
               type="password"
               value={values.password}
               onChangeFn={handleChange}
-              loginInput
+              form="true"
             />
             <ErrorMessage name="password" component={CustomMessageError} />
             <Button button contained responsive loginBtn type="submit">

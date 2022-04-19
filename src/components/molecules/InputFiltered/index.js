@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 import RootContext from "../../../context/RootContext";
-import Input from "../../atoms/Input";
+import { StyledInput } from "./StyledInputFiltered";
 
 const InputFiltered = () => {
   const { productNameInputValue, handleInputValue } = useContext(RootContext);
   return (
-    <Input
+    <StyledInput
       label="Search bike"
       value={productNameInputValue}
-      onChangeFn={handleInputValue}
-      inputType="material"
-      searchInput
+      onChange={handleInputValue}
     />
   );
 };

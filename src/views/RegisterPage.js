@@ -2,16 +2,16 @@ import React from "react";
 import { useContext } from "react";
 import Div from "../components/atoms/Div";
 import Heading from "../components/atoms/Heading";
-import RegisterForm from "../components/molecules/RegisterForm";
 import RootContext from "../context/RootContext";
 import { Redirect } from "react-router-dom";
 import { routes } from "../routes";
+import RegisterForm from "../components/organisms/Forms/RegisterForm";
 
 const RegisterPage = () => {
   const { currentUser } = useContext(RootContext);
   return (
     <>
-      <Div formWrapper>
+      <Div form="true">
         <Heading headingType="h1">I’m new here</Heading>
         <RegisterForm />
       </Div>

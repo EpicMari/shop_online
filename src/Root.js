@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Router from "./routing/Router";
 import RootContext from "./context/RootContext";
 import { GlobalStyle } from "./globalStyles/globalStyles";
@@ -50,31 +50,15 @@ const Root = () => {
       });
       setProducts(mapedP);
     }
-  }, [cart]);
+  }, [cart]); //eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    handleOrderValue();
-  }, [deliveryMethod, cartTotal]);
-
-  const handleOrderValue = () => {
     setOrderValue(cartTotal + parseFloat(deliveryMethod));
-  };
+  }, [deliveryMethod, cartTotal]);
 
   const handleDeliveryMethod = (event) => {
     setDeliveryMethod(event.target.value);
   };
-
-  // const handleNotification = () => {
-  //   setOpenNotification(true);
-  // };
-
-  // const handleNotificationClose = (event, reason) => {
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
-
-  //   setOpenNotification(false);
-  // };
 
   const setMaxAndMinPrice = (contentfulData) => {
     const productsPrices = contentfulData.map((product) => product.price);
@@ -83,7 +67,7 @@ const Root = () => {
     setPriceRange([minPrice, maxPrice]);
   };
 
-  const setContentfulData = (data) => {
+  const setContentfulData = useCallback((data) => {
     const contentfulData = data.map((item) => {
       const id = item.sys.id;
       const image = item.fields.image.fields.file.url;
@@ -100,9 +84,9 @@ const Root = () => {
     setInitialProducts([...contentfulData]);
     setMaxAndMinPrice(contentfulData);
     setProducts([...contentfulData]);
-  };
+  }, []);
 
-  const getContentfulData = () => {
+  useEffect(() => {
     client
       .getEntries({
         content_type: "product",
@@ -111,10 +95,6 @@ const Root = () => {
         setContentfulData(res.items);
       })
       .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    getContentfulData();
 
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -124,25 +104,25 @@ const Root = () => {
         setCurrentUser(null);
       }
     });
-  }, []);
+  }, [setContentfulData]);
 
   useEffect(() => {
-    setProductsInCartToLocalStorage();
-  }, [cart]);
-
-  const setProductsInCartToLocalStorage = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  };
+  }, [cart]);
 
   const handleGenderChoiceValue = (e) => {
     setGenderChoice(e.target.value);
   };
 
   useEffect(() => {
-    handleCartTotalCalculate();
+    let total = 0;
+    cart.forEach((product) => {
+      total = total + product.inCartQuantity * product.price;
+    });
+    setCartTotal(total);
   }, [cart]);
 
-  const filterProducts = () => {
+  useEffect(() => {
     let tempProducts = [...initialProducts];
 
     if (productNameInputValue.length !== 0) {
@@ -165,11 +145,7 @@ const Root = () => {
     );
 
     setProducts([...tempProducts]);
-  };
-
-  useEffect(() => {
-    filterProducts();
-  }, [categorySelectValue, productNameInputValue, priceRange]);
+  }, [categorySelectValue, productNameInputValue, priceRange, initialProducts]);
 
   const handlePriceRange = (e, newPrice) => {
     setPriceRange(newPrice);
@@ -189,15 +165,6 @@ const Root = () => {
 
   const handleCategorySelectValue = (e) => {
     setCategorySelectValue(e.target.value);
-  };
-
-  const handleCartTotalCalculate = () => {
-    let total = 0;
-    cart.forEach((product) => {
-      total = total + product.inCartQuantity * product.price;
-    });
-
-    setCartTotal(total);
   };
 
   const handleCartOpen = () => {
@@ -271,7 +238,6 @@ const Root = () => {
         onOffMenu,
         priceRange,
         genderChoice,
-        // openNotification,
         orderValue,
         deliveryMethod,
         currentUser,
@@ -288,8 +254,6 @@ const Root = () => {
         handlePriceRange,
         menuOff,
         handleGenderChoiceValue,
-        // handleNotificationClose,
-        // handleNotification,
         handleDeliveryMethod,
         handleOrderPaid,
         resetCart,

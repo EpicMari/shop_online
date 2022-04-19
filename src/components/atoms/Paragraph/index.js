@@ -3,6 +3,9 @@ import { P } from "./StyledParagraph";
 
 const Paragraph = ({
   children,
+  size,
+  weight,
+  color,
   newCustomer,
   priceItem,
   forgottenPassword,
@@ -19,6 +22,9 @@ const Paragraph = ({
 }) => {
   return (
     <P
+      size={size}
+      weight={weight}
+      color={color}
       isNewCustomer={newCustomer}
       forgottenPassword={forgottenPassword}
       isPriceItem={priceItem}

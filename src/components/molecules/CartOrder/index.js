@@ -1,23 +1,25 @@
 import React from "react";
-import Img from "../../atoms/Img";
-import Li from "../../atoms/Li";
-import Paragraph from "../../atoms/Paragraph";
-import Ul from "../../atoms/Ul";
+import {
+  StyledImg,
+  StyledList,
+  StyledListItem,
+  StyledParagraphPrice,
+} from "./StyledCartOrder";
 
 const CartOrder = ({ cartItems }) => {
   return (
-    <Ul>
+    <StyledList>
       {cartItems.map((item) => {
         return (
-          <Li paymentWrapper__cartItem>
-            <Img cartImg src={item.image} alt={item.name} />
-            <Paragraph paymentWrapper__cartItemName>
+          <StyledListItem>
+            <StyledImg src={item.image} alt={item.name} />
+            <StyledParagraphPrice>
               {item.name} {item.price * item.inCartQuantity}$
-            </Paragraph>
-          </Li>
+            </StyledParagraphPrice>
+          </StyledListItem>
         );
       })}
-    </Ul>
+    </StyledList>
   );
 };
 
