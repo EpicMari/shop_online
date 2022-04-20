@@ -2,10 +2,10 @@
 
 Shop Online built using React. Choose a product, add to cart and buy. The database is connected to the Admin Panel
 
-This site was built using [Netlify](bicycle-shop-online-react.netlify.app)
+This site was built using [Netlify](https://bicycle-shop-online-react.netlify.app/)
 
 ```
-bicycle-shop-online-react.netlify.app
+https://bicycle-shop-online-react.netlify.app/
 ```
 
 ## Table of contents
