@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routes } from "../routes";
-import Contact from "../views/Contact";
 import HeaderTemplate from "../templates/HeaderTemplate";
-import RegisterPage from "../views/RegisterPage";
 import LoginPage from "../views/LoginPage/LoginPage";
 import Orders from "../views/Orders";
 import SingleProduct from "../views/SingleProduct/SingleProduct";
@@ -11,6 +9,8 @@ import Home from "../views/Home/Home";
 import Payment from "../views/Payment/Payment";
 import Checkout from "../views/Checkout/Checkout";
 import Products from "../views/Products/Products";
+import Contact from "../views/Contact/Contact";
+import RegisterPage from "../views/RegisterPage/RegisterPage";
 
 const Router = () => {
   return (

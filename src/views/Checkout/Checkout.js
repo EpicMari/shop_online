@@ -204,7 +204,7 @@ const Checkout = () => {
                     contained
                     responsive
                     type="submit"
-                    disabled={!(isValid && dirty)}
+                    disabled={!(isValid && dirty && cart.length >= 1)}
                   >
                     pay
                   </Button>

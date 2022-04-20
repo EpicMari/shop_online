@@ -145,7 +145,7 @@ const Payment = ({
             <StyledCartTotalInfo headingType="h3">Cart</StyledCartTotalInfo>
             <CartOrder cartItems={cart} />
             <StyledCartTotalInfo headingType="h3">
-              Total cost: {orderValue}
+              Total cost: {orderValue}$
             </StyledCartTotalInfo>
           </StyledCartBox>
           <StyledPaypalBox>

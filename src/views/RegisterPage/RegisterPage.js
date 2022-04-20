@@ -1,18 +1,18 @@
 import React from "react";
 import { useContext } from "react";
-import Div from "../components/atoms/Div";
-import Heading from "../components/atoms/Heading";
-import RootContext from "../context/RootContext";
+import Div from "../../components/atoms/Div";
+import RootContext from "../../context/RootContext";
 import { Redirect } from "react-router-dom";
-import { routes } from "../routes";
-import RegisterForm from "../components/organisms/Forms/RegisterForm";
+import { routes } from "../../routes";
+import RegisterForm from "../../components/organisms/Forms/RegisterForm";
+import { StyledHeading } from "../Contact/StyledContact";
 
 const RegisterPage = () => {
   const { currentUser } = useContext(RootContext);
   return (
     <>
       <Div form="true">
-        <Heading headingType="h1">I’m new here</Heading>
+        <StyledHeading>I’m new here</StyledHeading>
         <RegisterForm />
       </Div>
       {currentUser ? <Redirect to={routes.home} /> : ""}

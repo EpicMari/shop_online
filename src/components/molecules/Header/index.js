@@ -15,11 +15,15 @@ import {
   StyledDropdownMenuBox,
   StyledList,
   StyledListItem,
+  StyledLogoBox,
+  StyledLogoLink,
   StyledNavigation,
   StyledSignOutButton,
   StyledSpanAmount,
+  StyledSpanLogo,
   StyledWrapper,
 } from "./StyledHeader";
+import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 
 const Header = () => {
   const { currentUser, handleCartOpen, menuToggle, onOffMenu, menuOff, cart } =
@@ -28,6 +32,12 @@ const Header = () => {
   return (
     <>
       <StyledWrapper>
+        <StyledLogoBox>
+          <StyledLogoLink to={routes.home}>
+            <DirectionsBikeIcon />
+            <StyledSpanLogo>e-bike</StyledSpanLogo>
+          </StyledLogoLink>
+        </StyledLogoBox>
         <StyledContentBox>
           <StyledButton onClickFn={handleCartOpen}>
             <ShoppingCartIcon />
@@ -65,13 +75,13 @@ const Header = () => {
               <StyledDropdownBox className="dropdown">
                 <StyledDropdownButton>User</StyledDropdownButton>
                 <StyledDropdownMenuBox>
-                  <RouterNavLink
+                  {/* <RouterNavLink
                     link="true"
                     to={routes.orders}
                     onClickFn={menuOff}
                   >
                     Orders
-                  </RouterNavLink>
+                  </RouterNavLink> */}
                   <StyledSignOutButton onClickFn={() => auth.signOut()}>
                     logout
                   </StyledSignOutButton>

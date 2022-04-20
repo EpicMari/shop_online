@@ -10,3 +10,7 @@ export const StyledParagraphPassword = styled(Paragraph)`
   text-align: center;
   text-decoration: underline;
 `;
+
+export const StyledHeading = styled.h1`
+  text-align: center;
+`;

@@ -1,19 +1,27 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 
 export const StyledWrapper = styled.div`
   position: sticky;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
   top: 0;
   z-index: 99;
   background: ${({ theme }) => theme.colors.white};
-  border-bottom: 2px solid ${({ theme }) => theme.colors.darkBlue};
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
 
 export const StyledContentBox = styled.div`
   display: flex;
   justify-content: flex-end;
   max-width: 1200px;
-  margin: 0 auto;
+
+  @media (min-width: 1400px) {
+    place-self: center;
+  }
 `;
 
 export const StyledNavigation = styled.nav`
@@ -153,7 +161,6 @@ export const StyledSignOutButton = styled(Button)`
   color: ${({ theme }) => theme.colors.darkBlue};
   font-size: ${({ theme }) => theme.fontSizes.s};
   padding: 10px;
-  margin-top: 10px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.darkKhaki};
@@ -162,4 +169,31 @@ export const StyledSignOutButton = styled(Button)`
   @media (min-width: ${({ theme }) => theme.devices.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.m};
   }
+`;
+
+export const StyledLogoBox = styled.div`
+  display: grid;
+  background: rgb(185, 152, 103);
+  background: linear-gradient(
+    90deg,
+    rgba(185, 152, 103, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+`;
+
+export const StyledLogoLink = styled(Link)`
+  place-self: center;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: ${({ theme }) => theme.fontSizes.l};
+  color: ${({ theme }) => theme.colors.darkBlue};
+  width: fit-content;
+  height: fit-content;
+  @media (min-width: ${({ theme }) => theme.devices.laptop}) {
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+  }
+`;
+
+export const StyledSpanLogo = styled.span`
+  margin-left: 10px;
 `;

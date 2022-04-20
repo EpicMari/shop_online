@@ -18,7 +18,7 @@ export const StyledWrapper = styled.div`
   place-items: center;
 
   @media (min-width: ${({ theme }) => theme.devices.laptop}) {
-    padding: 15rem 0;
+    padding: 15rem 5%;
   }
 `;
 

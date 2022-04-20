@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { routes } from "../../routes";
 import LoginForm from "../../components/organisms/Forms/LoginForm";
-import Heading from "../../components/atoms/Heading";
 import Div from "../../components/atoms/Div";
 import RouterNavLink from "../../components/atoms/RouterNavLink";
 import RootContext from "../../context/RootContext";
 import { Redirect } from "react-router-dom";
 import {
+  StyledHeading,
   StyledParagraphCustomer,
   StyledParagraphPassword,
 } from "./StyledLoginPage";
@@ -17,7 +17,7 @@ const LoginPage = () => {
   return (
     <>
       <Div form="true">
-        <Heading headingType="h1">Welcome back!</Heading>
+        <StyledHeading>Welcome back!</StyledHeading>
         <StyledParagraphCustomer size="s">
           New customer?
           <RouterNavLink link="true" to={routes.register}>

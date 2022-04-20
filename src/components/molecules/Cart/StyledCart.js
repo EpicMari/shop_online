@@ -28,13 +28,4 @@ export const StyledParagraphCost = styled(Paragraph)`
   }
 `;
 
-export const StyledNavLinkButton = styled(NavLink)`
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-
-  @media (min-width: ${({ theme }) => theme.devices.laptop}) {
-    right: 20px;
-    bottom: 15px;
-  }
-`;
+export const StyledNavLinkButton = styled(NavLink)``;

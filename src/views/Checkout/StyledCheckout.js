@@ -12,8 +12,8 @@ export const StyledWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.devices.laptop}) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    height: 100vh;
-    margin: 0 auto;
+    min-height: 100vh;
+    margin: 5% auto;
   }
 `;
 

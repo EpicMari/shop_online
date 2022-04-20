@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   paper: {
+    position: "relative",
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: "24px 20px 24px",
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "auto",
     width: "90vw",
     maxWidth: "800px",
-    position: "absolute",
+    maxHeight: "80vh",
   },
 }));
 

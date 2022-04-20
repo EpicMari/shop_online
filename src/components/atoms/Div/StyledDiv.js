@@ -4,7 +4,7 @@ export const StyledDiv = styled.div`
   ${({ form }) =>
     form &&
     css`
-      height: 100vh;
+      min-height: 100vh;
       padding: 20vh 20px;
       max-width: 400px;
       margin: 0 auto;
