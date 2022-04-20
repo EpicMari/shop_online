@@ -1,3 +1,5 @@
+![cover](github/bicycle.gif)
+
 # Shop Online - Shop Online App
 
 Shop Online built using React. Choose a product, add to cart and buy. The database is connected to the Admin Panel
