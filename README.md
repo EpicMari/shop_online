@@ -2,10 +2,10 @@
 
 Shop Online built using React. Choose a product, add to cart and buy. The database is connected to the Admin Panel
 
-This site was built using [Netlify](https://cook-book-react-app.netlify.app/)
+This site was built using [Netlify](bicycle-shop-online-react.netlify.app)
 
 ```
-https://cook-book-react-app.netlify.app/
+bicycle-shop-online-react.netlify.app
 ```
 
 ## Table of contents
@@ -16,7 +16,7 @@ https://cook-book-react-app.netlify.app/
 
 ## General info
 
-An online store application is a mapping of a real online store. Where we have such functionalities, a database in firebase, paypal, contact with the seller.
+An online store application is a mapping of a real online store. Where we have such functionalities, a database in firebase, paypal, contact with the seller, return mail after purchase.
 
 ## Technologies
 
